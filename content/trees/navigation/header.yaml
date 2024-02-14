@@ -1,0 +1,31 @@
+tree:
+  -
+    id: 09fdcc65-fcef-4013-a2c6-d794f6788e5a
+    title: "Women's diplomas"
+    url: women-diplomas
+    data:
+      title_ar: 'دبلومات نسائية'
+  -
+    id: e2c44b0e-3101-446f-8178-0a4f440d7d77
+    title: Courses
+    url: courses
+    data:
+      title_ar: دورات
+  -
+    id: 5795e31c-a662-4cb6-8a02-680232429846
+    title: 'Remote training'
+    url: remote-training
+    data:
+      title_ar: 'تدريب عن بعد'
+  -
+    id: f45d1455-4839-4895-ba24-0e76774b42e4
+    title: 'About Us'
+    url: about-us
+    data:
+      title_ar: 'من نحن'
+  -
+    id: b4cd31e9-3de1-4de3-87a1-19322b2493e2
+    title: 'contact us'
+    url: contact-us
+    data:
+      title_ar: 'تواصل معنا'

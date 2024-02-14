@@ -1,0 +1,32 @@
+[06-Feb-2024 11:35:01 UTC] PHP Warning:  require(/home/ahenktmy/public_html/elnokhba_laravel/vendor/composer/../symfony/polyfill-mbstring/bootstrap.php): Failed to open stream: No such file or directory in /home/ahenktmy/public_html/elnokhba_laravel/vendor/composer/autoload_real.php on line 41
+[06-Feb-2024 11:35:01 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/home/ahenktmy/public_html/elnokhba_laravel/vendor/composer/../symfony/polyfill-mbstring/bootstrap.php' (include_path='.:/opt/cpanel/ea-php81/root/usr/share/pear') in /home/ahenktmy/public_html/elnokhba_laravel/vendor/composer/autoload_real.php:41
+Stack trace:
+#0 /home/ahenktmy/public_html/elnokhba_laravel/vendor/composer/autoload_real.php(45): {closure}('0e6d7bf4a5811bf...', '/home/ahenktmy/...')
+#1 /home/ahenktmy/public_html/elnokhba_laravel/vendor/autoload.php(25): ComposerAutoloaderInit445276bfb3acbdbcddbb85df39af23cc::getLoader()
+#2 /home/ahenktmy/public_html/elnokhba_laravel/public/index.php(34): require('/home/ahenktmy/...')
+#3 {main}
+  thrown in /home/ahenktmy/public_html/elnokhba_laravel/vendor/composer/autoload_real.php on line 41
+[06-Feb-2024 11:35:01 UTC] PHP Warning:  require(/home/ahenktmy/public_html/elnokhba_laravel/vendor/composer/../symfony/polyfill-mbstring/bootstrap.php): Failed to open stream: No such file or directory in /home/ahenktmy/public_html/elnokhba_laravel/vendor/composer/autoload_real.php on line 41
+[06-Feb-2024 11:35:01 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/home/ahenktmy/public_html/elnokhba_laravel/vendor/composer/../symfony/polyfill-mbstring/bootstrap.php' (include_path='.:/opt/cpanel/ea-php81/root/usr/share/pear') in /home/ahenktmy/public_html/elnokhba_laravel/vendor/composer/autoload_real.php:41
+Stack trace:
+#0 /home/ahenktmy/public_html/elnokhba_laravel/vendor/composer/autoload_real.php(45): {closure}('0e6d7bf4a5811bf...', '/home/ahenktmy/...')
+#1 /home/ahenktmy/public_html/elnokhba_laravel/vendor/autoload.php(25): ComposerAutoloaderInit445276bfb3acbdbcddbb85df39af23cc::getLoader()
+#2 /home/ahenktmy/public_html/elnokhba_laravel/public/index.php(34): require('/home/ahenktmy/...')
+#3 {main}
+  thrown in /home/ahenktmy/public_html/elnokhba_laravel/vendor/composer/autoload_real.php on line 41
+[06-Feb-2024 11:35:02 UTC] PHP Warning:  require(/home/ahenktmy/public_html/elnokhba_laravel/vendor/composer/../symfony/polyfill-php73/bootstrap.php): Failed to open stream: No such file or directory in /home/ahenktmy/public_html/elnokhba_laravel/vendor/composer/autoload_real.php on line 41
+[06-Feb-2024 11:35:02 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/home/ahenktmy/public_html/elnokhba_laravel/vendor/composer/../symfony/polyfill-php73/bootstrap.php' (include_path='.:/opt/cpanel/ea-php81/root/usr/share/pear') in /home/ahenktmy/public_html/elnokhba_laravel/vendor/composer/autoload_real.php:41
+Stack trace:
+#0 /home/ahenktmy/public_html/elnokhba_laravel/vendor/composer/autoload_real.php(45): {closure}('0d59ee240a4cd96...', '/home/ahenktmy/...')
+#1 /home/ahenktmy/public_html/elnokhba_laravel/vendor/autoload.php(25): ComposerAutoloaderInit445276bfb3acbdbcddbb85df39af23cc::getLoader()
+#2 /home/ahenktmy/public_html/elnokhba_laravel/public/index.php(34): require('/home/ahenktmy/...')
+#3 {main}
+  thrown in /home/ahenktmy/public_html/elnokhba_laravel/vendor/composer/autoload_real.php on line 41
+[06-Feb-2024 11:35:02 UTC] PHP Warning:  require(/home/ahenktmy/public_html/elnokhba_laravel/vendor/composer/../symfony/polyfill-php73/bootstrap.php): Failed to open stream: No such file or directory in /home/ahenktmy/public_html/elnokhba_laravel/vendor/composer/autoload_real.php on line 41
+[06-Feb-2024 11:35:02 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/home/ahenktmy/public_html/elnokhba_laravel/vendor/composer/../symfony/polyfill-php73/bootstrap.php' (include_path='.:/opt/cpanel/ea-php81/root/usr/share/pear') in /home/ahenktmy/public_html/elnokhba_laravel/vendor/composer/autoload_real.php:41
+Stack trace:
+#0 /home/ahenktmy/public_html/elnokhba_laravel/vendor/composer/autoload_real.php(45): {closure}('0d59ee240a4cd96...', '/home/ahenktmy/...')
+#1 /home/ahenktmy/public_html/elnokhba_laravel/vendor/autoload.php(25): ComposerAutoloaderInit445276bfb3acbdbcddbb85df39af23cc::getLoader()
+#2 /home/ahenktmy/public_html/elnokhba_laravel/public/index.php(34): require('/home/ahenktmy/...')
+#3 {main}
+  thrown in /home/ahenktmy/public_html/elnokhba_laravel/vendor/composer/autoload_real.php on line 41

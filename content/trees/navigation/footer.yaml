@@ -1,0 +1,79 @@
+tree:
+  -
+    id: fa9dfd45-102c-4602-ae1c-916fe62dc2be
+    title: pages
+    data:
+      title_ar: الصفحات
+    children:
+      -
+        id: 7f0903d7-2102-495a-aef8-17a07de6b178
+        title: home
+        url: home
+        data:
+          title_ar: الرئيسية
+      -
+        id: da935991-6379-45d2-9505-4cd7ae8c909c
+        title: "Women's diplomas"
+        url: women-diplomas
+        data:
+          title_ar: 'دبلومات نسائية'
+      -
+        id: 22704ead-0ab7-4272-b625-ffd4a078053d
+        title: 'Remote training'
+        url: remote-training
+        data:
+          title_ar: 'تدريب عن بعد'
+      -
+        id: 589980ad-ccac-4757-b481-148a099dd671
+        title: 'About Us'
+        url: about-us
+        data:
+          title_ar: 'من نحن'
+      -
+        id: e42477fc-7e6e-42e5-b8b8-9ed9d7cff1bf
+        title: Blogs
+        url: blogs
+        data:
+          title_ar: المدونة
+  -
+    id: 7d55fb14-5e07-4fe2-9f5c-fe863211d146
+    title: 'Policies and regulations'
+    data:
+      title_ar: 'الشروط والاحكام'
+    children:
+      -
+        id: 839d34f7-7da8-4e0c-a301-befe6b13235d
+        title: 'Terms and Conditions'
+        url: terms-conditions
+        data:
+          title_ar: 'الشروط والأحكام'
+      -
+        id: 111daa5e-6391-4145-8201-845c33c93932
+        title: 'Common Questions'
+        url: common-questions
+        data:
+          title_ar: 'الاسئلة الشائعة'
+      -
+        id: 86c97904-e5ed-4831-9329-981d5f91c21b
+        title: 'Intellectual Property Rights'
+        url: intellectual-property-rights
+        data:
+          title_ar: 'حقوق الملكية الفكرية'
+  -
+    id: f2daff1b-abc0-471d-bd99-42ce949b7a85
+    title: 'To Contact Us'
+    data:
+      title_ar: 'للتواصل معنا'
+    children:
+      -
+        id: ad5068b2-5874-4234-8a83-55b14c05425f
+        title: 'Customers Service'
+        url: customers-service
+        data:
+          title_ar: 'خدمة العملاء'
+      -
+        id: e81e767b-72b5-47d3-ada6-154421e46f3c
+        title: 'Contact Us'
+        url: contact-us
+        data:
+          title_ar: 'تواصل معنا'

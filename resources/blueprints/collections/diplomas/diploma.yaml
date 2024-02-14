@@ -1,0 +1,209 @@
+tabs:
+  ar:
+    display: AR
+    sections:
+      -
+        fields:
+          -
+            handle: title
+            field:
+              type: text
+              required: true
+              input_type: text
+              antlers: false
+              display: Title
+              listable: hidden
+              instructions_position: above
+              visibility: visible
+              replicator_preview: true
+              hide_display: false
+              validate:
+                - required
+          -
+            handle: image_bread_crumb_ar
+            field:
+              max_files: 1
+              min_files: 1
+              mode: list
+              container: images
+              restrict: false
+              allow_uploads: true
+              show_filename: true
+              show_set_alt: true
+              type: assets
+              display: 'Image Bread Crumb'
+              listable: hidden
+              instructions_position: above
+              visibility: visible
+              replicator_preview: true
+              hide_display: false
+              width: 50
+              validate:
+                - required
+          -
+            handle: image_bread_crumb_mob_ar
+            field:
+              max_files: 1
+              min_files: 1
+              mode: list
+              container: images
+              restrict: false
+              allow_uploads: true
+              show_filename: true
+              show_set_alt: true
+              type: assets
+              display: 'Image Bread Crumb Mob'
+              listable: hidden
+              instructions_position: above
+              visibility: visible
+              replicator_preview: true
+              hide_display: false
+              width: 50
+              validate:
+                - required
+          -
+            handle: rating_ar
+            field:
+              input_type: text
+              placeholder: '4.8 (1,348 تقييمًا)'
+              antlers: false
+              type: text
+              display: Rating
+              instructions: 'مثال :  4.8 (1,348 تقييمًا)'
+              listable: hidden
+              instructions_position: above
+              visibility: visible
+              replicator_preview: true
+              hide_display: false
+          -
+            handle: content_details_ar
+            field:
+              antlers: false
+              type: textarea
+              display: 'Content Details'
+              listable: hidden
+              instructions_position: above
+              visibility: visible
+              replicator_preview: true
+              hide_display: false
+              validate:
+                - required
+          -
+            handle: diploma_objectives_ar
+            field:
+              type: list
+              display: 'Diploma objectives'
+              listable: hidden
+              instructions_position: above
+              visibility: visible
+              replicator_preview: true
+              hide_display: false
+              validate:
+                - required
+          -
+            handle: other_diploma_nominations_ar
+            field:
+              max_items: 3
+              mode: select
+              create: true
+              collections:
+                - diplomas
+              type: entries
+              display: 'Other diploma nominations'
+              listable: hidden
+              instructions_position: above
+              visibility: visible
+              replicator_preview: true
+              hide_display: false
+              validate:
+                - required
+                - 'max:3'
+  card:
+    display: Card
+    sections:
+      -
+        display: 'New Section'
+        fields:
+          -
+            handle: card_image
+            field:
+              max_files: 1
+              min_files: 1
+              mode: list
+              container: images
+              restrict: false
+              allow_uploads: true
+              show_filename: true
+              show_set_alt: true
+              type: assets
+              display: 'Card Image'
+              listable: hidden
+              instructions_position: above
+              visibility: visible
+              replicator_preview: true
+              hide_display: false
+              validate:
+                - required
+          -
+            handle: card_title_ar
+            field:
+              input_type: text
+              antlers: false
+              type: text
+              display: 'Card Title Ar'
+              width: 50
+              listable: hidden
+              instructions_position: above
+              visibility: visible
+              replicator_preview: true
+              hide_display: false
+              validate:
+                - required
+          -
+            handle: card_content_ar
+            field:
+              antlers: false
+              type: textarea
+              display: 'Card Content AR'
+              width: 50
+              listable: hidden
+              instructions_position: above
+              visibility: visible
+              replicator_preview: true
+              hide_display: false
+              validate:
+                - required
+  sidebar:
+    display: Sidebar
+    sections:
+      -
+        fields:
+          -
+            handle: slug
+            field:
+              type: slug
+              localizable: true
+              validate: 'max:200'
+          -
+            handle: diploma_system_field
+            field:
+              endpoint: InstallmentPackage
+              type: product_system
+              display: 'Diploma System Field'
+              listable: hidden
+              instructions_position: above
+              visibility: visible
+              replicator_preview: true
+              hide_display: false
+          -
+            handle: bread_crumb
+            field:
+              default: true
+              type: toggle
+              display: 'Bread Crumb'
+              listable: hidden
+              instructions_position: above
+              visibility: visible
+              replicator_preview: true
+              hide_display: false
+title: Diploma

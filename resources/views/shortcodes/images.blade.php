@@ -1,0 +1,3 @@
+{!! getImage($vars['link']) !!}
+
+

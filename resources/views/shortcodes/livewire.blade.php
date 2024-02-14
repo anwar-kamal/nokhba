@@ -1,0 +1,1 @@
+@livewire($vars['livewire'])

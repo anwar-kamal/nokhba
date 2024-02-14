@@ -1,0 +1,10 @@
+name: 'islam kabbary'
+super: true
+id: 2e89e72b-d67d-403d-918a-4a355e2bb71b
+password_hash: $2y$12$Flo1mgONIw0KmsbbxjyiP.Ouf3vt9r/1bjMUQgYTp8VoUYNjzsPGq
+preferences:
+  collections:
+    products:
+      after_save: continue_editing
+    pages:
+      after_save: continue_editing

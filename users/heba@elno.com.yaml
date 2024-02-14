@@ -1,0 +1,8 @@
+name: heba
+super: true
+id: b2b480ca-0cad-49f0-b4e1-44eb64b23d5e
+password_hash: $2y$12$2ZI2Yg6eteDCDt0jDdqP8uwyrj/18efw5ozUwHpMUf/tSMWObzWZa
+preferences:
+  assets:
+    images:
+      mode: grid

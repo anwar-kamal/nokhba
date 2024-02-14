@@ -1,0 +1,33 @@
+title: 'Icon Social'
+data:
+  social_media:
+    -
+      id: lr4y899w
+      url: 'https://www.youtube.com/channel/UCBTwLUMkIk2u3-d5DfXUFHA'
+      type: new_set
+      enabled: true
+      icon: youtube.png
+    -
+      id: lr4y8ftf
+      url: 'https://twitter.com/proleadersco'
+      type: new_set
+      enabled: true
+      icon: x.png
+    -
+      id: lr4y8rf7
+      url: 'https://www.linkedin.com/company/proleaders-company/mycompany/'
+      type: new_set
+      enabled: true
+      icon: linked.png
+    -
+      id: lr4y8yob
+      url: 'https://www.facebook.com/proleadersco/'
+      type: new_set
+      enabled: true
+      icon: facebook.png
+    -
+      id: lr4y97us
+      url: 'https://www.instagram.com/proleadersco/'
+      type: new_set
+      enabled: true
+      icon: insta.png
