@@ -4,15 +4,23 @@
 
 .container {
     max-width: 1440px;
-    padding:0 .75rem;
+    padding: 0 2rem;
 }
 
-.text-2xl{
+@media (max-width:768px) {
+    .container {
+        padding: 0 .75rem;
+    }
+}
+
+.text-2xl {
     font-size: clamp(1.1rem 4vw 1.6rem);
 }
-.text-lg{
+
+.text-lg {
     font-size: clamp(.75rem 4vw 1.1rem);
 }
+
 body {
     min-height: 100vh;
     display: flex;
@@ -25,80 +33,94 @@ main {
     /* margin-bottom: 96px; */
 }
 
+.modalx {
+    animation: fadeIn 0.75s ease-in-out;
+}
 
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
 
+    to {
+        opacity: 1;
+        transform: translateY(0%);
+    }
+}
 
 .nav-link {
-  padding: 20px 0px;
-  position: relative;
-  color: #464646;
+    padding: 20px 0px;
+    position: relative;
+    color: #464646;
 }
 
 .nav-link:hover {
-  color: #9F1916;
+    color: #9F1916;
 }
 
 .nav-link::before {
-  transition: 400ms;
-  height: 3px;
-  content: "";
-  position: absolute;
-  background-color: #9F1916;
-  border-radius: 50px;
+    transition: 400ms;
+    height: 3px;
+    content: "";
+    position: absolute;
+    background-color: #9F1916;
+    border-radius: 50px;
 }
 
 .nav-link-ltr::before {
-  width: 0%;
-  bottom: 10px;
+    width: 0%;
+    bottom: 10px;
 }
 
 .nav-link-ltr:hover::before {
-  width: 100%;
-  margin-inline: auto;
+    width: 100%;
+    margin-inline: auto;
 }
 
 
 
 .sign-link {
-  position: relative;
-  color: #464646;
+    position: relative;
+    color: #464646;
 }
 
 .sign-link:hover {
-  color: #9F1916;
+    color: #9F1916;
 }
 
 .sign-link::before {
-  transition: 400ms;
-  height: 3px;
-  bottom: -10px;
-  content: "";
-  position: absolute;
-  background-color: #9F1916;
-  border-radius: 50px;
+    transition: 400ms;
+    height: 3px;
+    bottom: -10px;
+    content: "";
+    position: absolute;
+    background-color: #9F1916;
+    border-radius: 50px;
 }
 
 
 /* active link */
 
-.current-nav-link{
+.current-nav-link {
     color: #9F1916;
 }
 
 /*  */
-.current-nav-link::before{
+.current-nav-link::before {
     width: 100%;
     bottom: 10px;
 }
 
 
-main .swiper-pagination-bullet{
+main .swiper-pagination-bullet {
     background-color: #ffffffda;
     opacity: 1;
     width: 10px;
     height: 10px;
 }
-main .swiper-pagination-bullet-active{
+
+main .swiper-pagination-bullet-active {
     background-color: #9F1916;
 }
 
@@ -128,7 +150,7 @@ main .swiper-pagination-bullet-active{
 
 
 .button-checked {
-    @apply  rounded-xl  py-2.5 px-6 md:px-[30px] md:py-3.5 disabled:bg-zinc-500 bg-primary  justify-center items-center flex border text-white leading-none
+    @apply rounded-xl py-2.5 px-6 md:px-[30px] md:py-3.5 disabled:bg-zinc-500 bg-primary justify-center items-center flex border text-white leading-none
 }
 
 .button-checked-white {
@@ -166,8 +188,8 @@ label.login {
     @apply text-neutral-700 max-md:text-sm
 }
 
-.custom__drop__shadow{
-    box-shadow:0px 0px 20px #00aeff1a;
+.custom__drop__shadow {
+    box-shadow: 0px 0px 20px #00aeff1a;
 }
 
 
@@ -181,7 +203,7 @@ label.login {
 }
 
 label.diploma-sub-title {
-    @apply text-start text-neutral-600 max-md:text-sm capitalize  py-[5px]
+    @apply text-start text-neutral-600 text-sm capitalize py-[5px]
 }
 
 .diploma-sub-title {
@@ -196,12 +218,21 @@ label.diploma-sub-title {
     @apply text-center md:text-start text-neutral-700 md:text-lg text-[13px] font-medium capitalize leading-tight
 }
 
-.dash-nav-active {
+.dash-nav-active, .dash-nav-inactive {
     @apply w-full relative px-4
 }
 
-.dash-nav-inactive {
-    @apply w-full relative px-4
+.dash-nav-inactive:hover a {
+    @apply flex gap-2 bg-primary rounded-xl p-4 relative text-white
+}
+
+.dash-nav-inactive:hover a::before {
+    content: "";
+    @apply rtl:-left-4 ltr:-right-4 bg-primary top-0 rounded-xl w-1 absolute h-full
+}
+
+.dash-nav-inactive:hover a img {
+    @apply invert
 }
 
 .dash-nav-active a {
@@ -245,27 +276,30 @@ select.minimal {
     background-color: inherit;
     border-radius: 50% 50% 0 0 / 100% 100% 0 0;
 }
-select:not([size]){
-    background-position:left 0.75rem center !important;
+
+select:not([size]) {
+    background-position: left 0.75rem center !important;
 }
-select:not([size]):where([dir="ltr"], [dir="ltr"] *){
-    background-position:right 0.75rem center !important;
+
+select:not([size]):where([dir="ltr"], [dir="ltr"] *) {
+    background-position: right 0.75rem center !important;
 }
 
 .item-in-center {
-  grid-column-end: 5;
+    grid-column-end: 5;
 }
 
 .sub-title {
-    @apply max-w-[991px]  capitalize leading-9 line-clamp-4 py-2 text-neutral-600;
-        font-size: clamp(.8rem, 3.5vw, 1.2rem);
+    @apply max-w-[991px] capitalize leading-9 line-clamp-4 py-2 text-neutral-600;
+    font-size: clamp(.8rem, 3.5vw, 1.2rem);
 }
-p{
+
+p {
     font-size: clamp(.7rem, 3vw, 1rem);
 }
 
 section {
-    @apply  py-8 my-8 overflow-x-hidden !important
+    @apply py-8 my-8 overflow-x-hidden !important
 }
 
 footer {
@@ -273,7 +307,7 @@ footer {
 }
 
 input, select, textarea {
-    @apply md:p-[14px] md:py-[10px] p-2 rounded-xl  focus:ring-0 focus:outline-none focus:border-primary  border border-neutral-200 ring-neutral-100    text-neutral-700 !important
+    @apply md:p-[14px] md:py-[10px] p-2 rounded-xl focus:ring-0 focus:outline-none focus:border-primary border border-neutral-200 ring-neutral-100 text-neutral-700 !important
 }
 
 
@@ -349,6 +383,7 @@ tr {
 option {
     @apply bg-white text-black !important
 }
+
 option:checked {
     background-color: #007bff !important;
     color: #fff;
@@ -358,15 +393,20 @@ li {
     @apply text-zinc-600 text-base font-normal leading-none py-2.5
 }
 
-.invisible-scrollbar::-webkit-scrollbar {
-  display: none;
+.desktop-aside li {
+    @apply text-base font-normal leading-none py-1
 }
+
+.invisible-scrollbar::-webkit-scrollbar {
+    display: none;
+}
+
 input[type="checkbox"] {
     width: 1.25rem !important;
     height: 1.25rem !important;
     accent-color: rgb(128, 0, 0) !important;
     cursor: pointer !important;
-    appearance: none !important ;
+    appearance: none !important;
     -webkit-appearance: none !important;
     display: flex !important;
     align-content: center !important;
@@ -377,12 +417,13 @@ input[type="checkbox"] {
     border-radius: 0.25rem !important;
 
 }
-input[type='radio']{
+
+input[type='radio'] {
     width: 1rem !important;
     height: 1rem !important;
     border-radius: 50% !important;
     padding: 7.5px !important;
-    background-size: 1.25em  !important;
+    background-size: 1.25em !important;
     background-position: center !important;
     background-repeat: no-repeat !important;
 
@@ -390,14 +431,15 @@ input[type='radio']{
     cursor: pointer;
 
 }
-input[type='radio']:checked{
+
+input[type='radio']:checked {
     border-color: transparent;
     background-color: #9F1916 !important;
 }
 
 
 input[type="checkbox"]:checked {
-background-color: #fff !important;
+    background-color: #fff !important;
 }
 
 
@@ -431,7 +473,50 @@ input.otp-input:disabled {
     transition: opacity 0.3s ease-in-out;
     z-index: 9999999999999999999;
 }
-.grid-autoo{
+
+.grid-autoo {
     display: grid;
-    grid-template-columns: repeat( auto-fit, minmax(280px, 1fr) );
-  }
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+.grid-auto-500 {
+    grid-template-columns: repeat(auto-fill, minmax(450px, 1fr));
+}
+
+@media (max-width: 600px) {
+    .grid-auto-500 {
+        grid-template-columns: 1fr;
+    }
+}
+
+.progress-bar {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+
+/**/
+.setting_terms p span {
+    font-size: 16px !important;
+    --tw-text-opacity: 1;
+    color: rgb(82 82 91 / var(--tw-text-opacity));
+    font-weight: 400;
+    font-family: 'Somar Sans', sans-serif !important;
+    text-transform: capitalize;
+    line-height: 1.5;
+}
+
+.setting_terms p u span {
+    line-height: 1.75rem;
+    font-weight: 600;
+    --tw-text-opacity: 1;
+}
+
+.setting_terms table {
+    display: none;
+}

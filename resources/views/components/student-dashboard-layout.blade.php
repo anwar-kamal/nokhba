@@ -37,7 +37,9 @@
 <body class="overflow-x-hidden relative font-somar">
     <x-header-component></x-header-component>
 
-    {{$slot}}
+
+    {{ $slot }}
+
 
     <script src="{{ asset('assets/js/main.js') }}"></script>
     <script src="{{ asset('assets/js/swiper.js') }}"></script>

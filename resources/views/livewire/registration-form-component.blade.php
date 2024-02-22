@@ -1,10 +1,10 @@
 <div >
-    <div>
+    <div >
         <div class="bg-lightgray p-8 rounded-2xl "  >
             <h3 class="diploma-title">{{ __('messages.Register now for the Human Resources Diploma') }}</h3>
             <div id="registrationForm" class="flex flex-col gap-8">
                 <div class="flex flex-col">
-                    <label class="diploma-sub-title" for="name">{{ __('messages.Name') }}<span class="text-red-600">
+                    <label class="diploma-sub-title" for="name">{{ __('messages.Name') }}<span class="">
                             *</span></label>
                     <input type="text" class="@error('name') border-2 border-red-600 @enderror drop-shadow-sm"
                         id="name" wire:model.defer='name' placeholder="{{ __('messages.Name') }}">

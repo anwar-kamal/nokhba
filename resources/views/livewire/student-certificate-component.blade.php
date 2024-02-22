@@ -46,7 +46,7 @@
                         </div>
                     </td>
                     <td class="px-6 py-4">
-                        <img src="./assets/print-file.png" alt="">
+                        <img src="{{ asset('assets/img/print-file.png') }}" alt="">
                     </td>
                 </tr>
                 <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 ">
@@ -72,7 +72,7 @@
                         </div>
                     </td>
                     <td class="px-6 py-4">
-                        <img src="./assets/print-file.png" alt="">
+                        <img src="{{ asset('assets/img/print-file.png') }}" alt="">
                     </td>
                 </tr>
                 <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 ">
@@ -98,7 +98,7 @@
                         </div>
                     </td>
                     <td class="px-6 py-4">
-                        <img src="./assets/print-file.png" alt="">
+                        <img src="{{ asset('assets/img/print-file.png') }}" alt="">
                     </td>
                 </tr>
                 <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 ">
@@ -124,7 +124,7 @@
                         </div>
                     </td>
                     <td class="px-6 py-4">
-                        <img src="./assets/print-file.png" alt="">
+                        <img src="{{ asset('assets/img/print-file.png') }}" alt="">
                     </td>
                 </tr>
             </tbody>
@@ -138,7 +138,7 @@
             <div class=" text-neutral-700 text-base font-bold font-['Somar Sans'] capitalize leading-[14px]">
                 التقدير :جيد مرتفع (C+)</div>
             <div class="cent gap-2 border border-primary  rounded-2xl p-2">
-                <img src="./assets/print-file.png" class=" relative">
+                <img src="{{ asset('assets/img/print-file.png') }}" class=" relative">
                 </img>
                 <div class=" text-red-800 text-sm font-semibold font-['Somar Sans'] capitalize leading-[14px]">
                     عرض الشهادة</div>
@@ -151,7 +151,7 @@
             <div class=" text-neutral-700 text-base font-bold font-['Somar Sans'] capitalize leading-[14px]">
                 التقدير :جيد مرتفع (C+)</div>
             <div class="cent gap-2 border border-primary  rounded-2xl p-2">
-                <img src="./assets/print-file.png" class=" relative">
+                <img src="{{ asset('assets/img/print-file.png') }}" class=" relative">
                 </img>
                 <div class=" text-red-800 text-sm font-semibold font-['Somar Sans'] capitalize leading-[14px]">
                     عرض الشهادة</div>
@@ -164,7 +164,7 @@
             <div class=" text-neutral-700 text-base font-bold font-['Somar Sans'] capitalize leading-[14px]">
                 التقدير :جيد مرتفع (C+)</div>
             <div class="cent gap-2 border border-primary  rounded-2xl p-2">
-                <img src="./assets/print-file.png" class=" relative">
+                <img src="{{ asset('assets/img/print-file.png') }}" class=" relative">
                 </img>
                 <div class=" text-red-800 text-sm font-semibold font-['Somar Sans'] capitalize leading-[14px]">
                     عرض الشهادة</div>
@@ -177,7 +177,7 @@
             <div class=" text-neutral-700 text-base font-bold font-['Somar Sans'] capitalize leading-[14px]">
                 التقدير :جيد مرتفع (C+)</div>
             <div class="cent gap-2 border border-primary  rounded-2xl p-2">
-                <img src="./assets/print-file.png" class=" relative">
+                <img src="{{ asset('assets/img/print-file.png') }}" class=" relative">
                 </img>
                 <div class=" text-red-800 text-sm font-semibold font-['Somar Sans'] capitalize leading-[14px]">
                     عرض الشهادة</div>

@@ -4,8 +4,11 @@ namespace App\Services;
 
 use App\Models\Course;
 use App\Models\CourseCustomerExam;
+use App\Models\CourseLevel;
 use App\Models\CourseSession;
 use App\Models\DiplomaProduct;
+use App\Models\LibraryFile;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 
 class CustomerService
@@ -34,6 +37,14 @@ class CustomerService
         return $sessions;
     }
 
+    public static function passed_course_sessions($course_id)
+    {
+        $sessions = CourseSession::where("course_id", $course_id)
+            ->where('status', '!=', 'canceled')->where('session_date', '<=', date('Y-m-d'))->get();
+
+        return $sessions;
+    }
+
     public static function completed_courses()
     {
         return auth('customers')->user()->active_courses()->where("is_diploma", 1)->whereIn('course_status_id', [6, 7])->get();
@@ -50,6 +61,7 @@ class CustomerService
         return auth('customers')->user()->course_customer()
             ->whereIn('course_id', CustomerService::current_courses()->pluck("id")->toArray())
             ->whereNotIn("confirmation", ["Rejected", "Not Yet"])
+            ->orderBy("created_at","desc")
             ->get();
     }
 
@@ -58,6 +70,7 @@ class CustomerService
         return auth('customers')->user()->course_customer()
             ->whereIn('course_id', CustomerService::all_courses()->pluck("id")->toArray())
             ->whereNotIn("confirmation", ["Rejected", "Not Yet"])
+            ->orderBy('id', 'DESC')
             ->get();
     }
 
@@ -86,6 +99,21 @@ class CustomerService
         return $semester;
     }
 
+    public static function current_semester()
+    {
+        $cs = CustomerService::current_course_customers()->first();
+        $semester = null;
+        if ($cs && $cs->order_detail) {
+            if ($cs->order_detail->item) {
+                if ($cs->order_detail->item->semester) {
+                    $semester = $cs->order_detail->item->semester;
+                }
+            }
+        }
+        return $semester;
+    }
+
+
     //sessions
     public static function quizes()
     {
@@ -93,7 +121,7 @@ class CustomerService
             ? CourseSession::whereIn('course_id', CustomerService::current_course_customers()->pluck('course_id')->toArray())
             ->whereNotNull('exam_id')
             ->orderBy("session_date", "asc")
-            ->get()
+            // ->get()
             : null;
 
         return $quizes;
@@ -130,13 +158,24 @@ class CustomerService
 
     public static function course_final_exam($course_id)
     {
-        $exam = CustomerService::course_course_customer($course_id)
+        $exam = CustomerService::course_course_customer($course_id)->first()
             ? CourseCustomerExam::whereIn('course_customer_id', CustomerService::course_course_customer($course_id)->pluck('id')->toArray())
             ->whereNotIn('course_exam_id', CustomerService::course_quizes_exam_ids($course_id))
             ->orderBy("from", "desc")->first()
             : "";
 
         return $exam;
+    }
+
+    public static function passed_course_customer_exams($course_id)
+    {
+        $exams = CustomerService::course_course_customer($course_id)->first()
+            ? CustomerService::course_course_customer($course_id)->first()
+            ->course_customer_exams()->whereNotNull('total_score')->join('course_exams', 'course_customer_exams.course_exam_id', '=', 'course_exams.id')
+            ->join('exams', 'course_exams.exam_id', '=', 'exams.id')->whereColumn('course_customer_exams.total_score', '>', DB::raw('CAST(exams.pass_percent AS UNSIGNED)'))
+            ->distinct('course_customer_exams.course_exam_id')
+            ->whereIn('course_customer_exams.course_exam_id', CustomerService::course_quizes_exam_ids($course_id)) : null;
+        return $exams;
     }
 
     public static function enter_exam($id, $cs_id)
@@ -163,5 +202,29 @@ class CustomerService
                 env('APP_URL_OLD') . '/course_customer_exam/' . $customer_session_exam->token . '/exam/create'
             );
         }
+    }
+
+    public static function session_files()
+    {
+        $session_files_query = LibraryFile::where("model_type","App\Models\CourseSession")
+        ->whereIn("model_id", CourseSession::whereIn("course_id",CustomerService::all_courses()->pluck("id")->toArray())->pluck("id")->toArray());
+
+        return $session_files_query;
+    }
+
+    public static function course_files()
+    {
+        $course_files_query = LibraryFile::query();
+        $course_files_query->where("model_type","App\Models\Course")->whereIn("model_id",CustomerService::all_courses()->pluck("id")->toArray());
+
+        return $course_files_query;
+    }
+
+    public static function product_files()
+    {
+        $product_files_query = LibraryFile::query();
+        $product_files_query->where("model_type","App\Models\Product")->whereIn("model_id", CourseLevel::whereIn("id",CustomerService::all_courses()->pluck("course_level_id")->toArray())->pluck("product_id")->toArray());
+
+        return $product_files_query;
     }
 }

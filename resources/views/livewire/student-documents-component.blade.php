@@ -1,112 +1,128 @@
 <div class="">
-    <div class=" flex md:justify-end justify-evenly md:gap-4 gap-2 " x-data="{ filter1: false, filter2: false }">
-        <div class=" relative">
-            <div class="px-4 py-2 md:gap-4 gap-1 bg-white rounded-2xl border border-neutral-200 justify-between items-center inline-flex cursor-pointer"
-                @click="filter1 =!filter1">
+    <div class="flex md:justify-end justify-evenly md:gap-4 gap-2">
+        <div x-data="{ sort: '{{ __('messages.course') }}', course: false }" class="relative">
+            <div class="px-4 py-2 gap-4 bg-white rounded-2xl border border-neutral-200 justify-between items-center inline-flex cursor-pointer"
+                @click="course =!course" @click.away="course = false">
                 <div class="text-neutral-700 text-sm font-normal font-['Somar Sans'] leading-[14px]">
-                    الفصول
-                    الدراسية
+                    <span x-text="sort"></span>
                 </div>
                 <div>
-                    <i class="fa-solid fa-chevron-down" x-show="!filter1"></i>
-                    <i class="fa-solid fa-chevron-up" x-show="filter1"></i>
+                    <div x-show="!course">
+                        <i class="fa-solid fa-chevron-down "></i>
+                    </div>
+                    <div class="hidden" x-show="course" :class="course ? ' !block ' : ''"><i
+                            class="fa-solid fa-chevron-up "></i>
+                    </div>
                 </div>
             </div>
-            <ul class=" absolute top-9 right-0 left-0  z-30 bg-white border rounded-xl drop-shadow-md  text-zinc-900 overflow-hidden tracking-wider grid sm:gap-1  my-2"
-                x-show="filter1" x-data="{ sort: 'empty' }">
+            <ul class=" absolute hidden top-11 rtl:left-0 ltr:right-0 max-w-64 min-w-40  z-30 bg-white border rounded-xl drop-shadow-md  text-zinc-900  tracking-wider  sm:gap-1"
+                @click="course = !course" :class="course ? '!grid' : ''" x-show="course">
+                <li class="hover:bg-primary hover:text-white rounded-xl sm:px-6 sm:p-3 cursor-pointer   sm:text-base px-2 text-neutral-700 text-sm font-normal font-['Somar Sans'] leading-[14px] "
+                    wire:click="select_course({{ null }})"
+                    @click="sort='{{ __('messages.all') }}'; course = !course"
+                    :class="sort === 'empty' ? 'bg-red-50 text-red-900' : ''">
+                    {{ __('messages.all') }}</li>
 
-                <li class="hover:bg-primary hover:text-white rounded-xl sm:px-6 sm:p-3 cursor-pointer  whitespace-nowrap sm:text-base px-2 text-neutral-700 text-sm font-normal font-['Somar Sans'] leading-[14px] "
-                    @click="sort='empty'" :class="sort === 'empty' ? 'bg-red-50 text-red-900' : ''">
-                    دورات اليوم</li>
-                <li class="hover:bg-primary hover:text-white rounded-xl sm:px-6 sm:p-3 cursor-pointer  whitespace-nowrap sm:text-base px-2 text-neutral-700 text-sm font-normal font-['Somar Sans'] leading-[14px] "
-                    @click="sort='finished'" :class="sort === 'finished' ? 'bg-red-50 text-red-900' : ''">
-                    دورات مكتملة</li>
-                <li class="hover:bg-primary hover:text-white rounded-xl sm:px-6 sm:p-3 cursor-pointer  whitespace-nowrap sm:text-base px-2 text-neutral-700 text-sm font-normal font-['Somar Sans'] leading-[14px] "
-                    @click="sort='all'" :class="sort === 'all' ? 'bg-red-50 text-red-900' : ''">
-                    جميع </li>
-
-            </ul>
-        </div>
-        <div class=" relative">
-            <div class="px-4 py-2 md:gap-4 gap-1 bg-white rounded-2xl border border-neutral-200 justify-between items-center inline-flex cursor-pointer"
-                @click="filter2 =!filter2">
-                <div class="text-neutral-700 text-sm font-normal font-['Somar Sans'] leading-[14px]">
-                    الفصول
-                    الدراسية
-                </div>
-                <div>
-                    <i class="fa-solid fa-chevron-down" x-show="!filter2"></i>
-                    <i class="fa-solid fa-chevron-up" x-show="filter2"></i>
-                </div>
-            </div>
-            <ul class=" absolute top-9 right-0 left-0  z-30 bg-white border rounded-xl drop-shadow-md  text-zinc-900 overflow-hidden tracking-wider grid sm:gap-1  my-2"
-                x-show="filter2" x-data="{ sort: 'empty' }">
-
-                <li class="hover:bg-primary hover:text-white rounded-xl sm:px-6 sm:p-3 cursor-pointer  whitespace-nowrap sm:text-base px-2 text-neutral-700 text-sm font-normal font-['Somar Sans'] leading-[14px] "
-                    @click="sort='empty'" :class="sort === 'empty' ? 'bg-red-50 text-red-900' : ''">
-                    دورات اليوم</li>
-                <li class="hover:bg-primary hover:text-white rounded-xl sm:px-6 sm:p-3 cursor-pointer  whitespace-nowrap sm:text-base px-2 text-neutral-700 text-sm font-normal font-['Somar Sans'] leading-[14px] "
-                    @click="sort='finished'" :class="sort === 'finished' ? 'bg-red-50 text-red-900' : ''">
-                    دورات مكتملة</li>
-                <li class="hover:bg-primary hover:text-white rounded-xl sm:px-6 sm:p-3 cursor-pointer  whitespace-nowrap sm:text-base px-2 text-neutral-700 text-sm font-normal font-['Somar Sans'] leading-[14px] "
-                    @click="sort='all'" :class="sort === 'all' ? 'bg-red-50 text-red-900' : ''">
-                    جميع </li>
+                @foreach ($current_courses as $course)
+                    <li class="hover:bg-primary hover:text-white rounded-xl sm:px-6 sm:p-3 cursor-pointer   sm:text-base px-2 text-neutral-700 text-sm font-normal font-['Somar Sans'] leading-[14px] "
+                        wire:click="select_course({{ $course->id }})"
+                        @click="sort='{{ $course->name }}'; course = !course"
+                        :class="sort === 'empty' ? 'bg-red-50 text-red-900' : ''">
+                        {{ $course->name }}</li>
+                @endforeach
             </ul>
         </div>
 
-    </div>
-    <div class=" grid 2xl:grid-cols-3 md:grid-cols-2 gap-4 py-8">
-        <div class="    bg-white rounded-2xl border border-neutral-200 p-4 flex justify-between items-center">
-            <div class="cent gap-2">
-                <img src="./assets/pdf.png" alt="">
-                <div class=" text-neutral-800 text-xs lg:text-sm font-semibold font-['Somar Sans'] capitalize leading-6">
-                    مبادئ إدارة الموارد البشريه - بشري 101 - مستوي اول (المحاضرة التانية)
-                    مستند</div>
+        <div x-data="{ sort: '{{ __('messages.file type') }}', type: false }" class="relative">
+            <div class="px-4 py-2 gap-4 bg-white rounded-2xl border border-neutral-200 justify-between items-center inline-flex cursor-pointer"
+                @click="type =!type" @click.away="type = false">
+                <div class="text-neutral-700 text-sm font-normal font-['Somar Sans'] leading-[14px]">
+                    <span x-text="sort"></span>
+                </div>
+                <div>
+                    <div x-show="!type">
+                        <i class="fa-solid fa-chevron-down "></i>
+                    </div>
+                    <div class="hidden" x-show="type" :class="type ? ' !block ' : ''"><i
+                            class="fa-solid fa-chevron-up "></i>
+                    </div>
+                </div>
             </div>
-            <a href="" download="your-file-name.pdf">
-                <i class="fa-solid fa-download text-primary fa-lg "></i>
-            </a>
-        </div>
-        <div class="    bg-white rounded-2xl border border-neutral-200 p-4 flex justify-between items-center">
-            <div class="cent gap-2">
-                <img src="./assets/pdf.png" alt="">
-                <div class=" text-neutral-800 text-xs lg:text-sm font-semibold font-['Somar Sans'] capitalize leading-6">
-                    واجب المحاضره الخامسه</div>
-            </div>
-            <a href="" download="your-file-name.pdf">
-                <i class="fa-solid fa-download text-primary fa-lg "></i>
-            </a>
-        </div>
-        <div class="    bg-white rounded-2xl border border-neutral-200 p-4 flex justify-between items-center">
-            <div class="cent gap-2">
-                <img src="./assets/pdf.png" alt="">
-                <div class=" text-neutral-800 text-xs lg:text-sm font-semibold font-['Somar Sans'] capitalize leading-6">
-                    واجب المحاضره الخامسه</div>
-            </div>
-            <a href="" download="your-file-name.pdf">
-                <i class="fa-solid fa-download text-primary fa-lg "></i>
-            </a>
-        </div>
-        <div class="    bg-white rounded-2xl border border-neutral-200 p-4 flex justify-between items-center">
-            <div class="cent gap-2">
-                <img src="./assets/pdf.png" alt="">
-                <div class=" text-neutral-800 text-xs lg:text-sm font-semibold font-['Somar Sans'] capitalize leading-6">
-                    واجب المحاضره الخامسه</div>
-            </div>
-            <a href="" download="your-file-name.pdf">
-                <i class="fa-solid fa-download text-primary fa-lg "></i>
-            </a>
-        </div>
-        <div class="    bg-white rounded-2xl border border-neutral-200 p-4 flex justify-between items-center">
-            <div class="cent gap-2">
-                <img src="./assets/pdf.png" alt="">
-                <div class=" text-neutral-800 text-xs lg:text-sm font-semibold font-['Somar Sans'] capitalize leading-6">
-                    واجب المحاضره الخامسه</div>
-            </div>
-            <a href="" download="your-file-name.pdf">
-                <i class="fa-solid fa-download text-primary fa-lg "></i>
-            </a>
+            <ul class=" absolute hidden top-11 rtl:left-0 ltr:right-0 max-w-64 min-w-40  z-30 bg-white border rounded-xl drop-shadow-md  text-zinc-900  tracking-wider  sm:gap-1"
+                @click="type = !type" :class="type ? '!grid' : ''" x-show="type">
+                <li class="hover:bg-primary hover:text-white rounded-xl sm:px-6 sm:p-3 cursor-pointer   sm:text-base px-2 text-neutral-700 text-sm font-normal font-['Somar Sans'] leading-[14px] "
+                    wire:click="select_type({{ null }})" @click="sort='{{ __('messages.all') }}'; type = !type"
+                    :class="sort === 'empty' ? 'bg-red-50 text-red-900' : ''">
+                    {{ __('messages.all') }}</li>
+
+                @foreach (App\Models\LibraryFileType::all() as $type)
+                    <li class="hover:bg-primary hover:text-white rounded-xl sm:px-6 sm:p-3 cursor-pointer   sm:text-base px-2 text-neutral-700 text-sm font-normal font-['Somar Sans'] leading-[14px] "
+                        wire:click="select_type({{ $type->id }})"
+                        @click="sort='{{ $type->name }}'; type = !type"
+                        :class="sort === 'empty' ? 'bg-red-50 text-red-900' : ''">
+                        {{ $type->name }}</li>
+                @endforeach
+            </ul>
         </div>
     </div>
+
+    @if ($course_files->count() == 0 && $session_files->count() == 0 && $product_files->count() == 0)
+        {{-- Anwar (no files) --}}
+        {{ __('messages.there are no files yet') }}
+    @else
+        <div class=" grid 2xl:grid-cols-3 md:grid-cols-2 gap-4 py-8">
+            @foreach ($session_files as $file)
+                <x-file-card>
+                    <x-slot name="title">{{ $file->name }}</x-slot>
+                    <x-slot name="url">{{ $file->url }}</x-slot>
+                    <x-slot name="icon">
+                        @if ($file->library_file_type_id == 1)
+                            <img src="{{ asset('assets/img/img_icon.png') }}" alt="">
+                        @elseif($file->library_file_type_id == 2)
+                            <img src="{{ asset('assets/img/video_icon.png') }}" alt="">
+                        @elseif($file->library_file_type_id == 3)
+                            <img src="{{ asset('assets/img/book_icon.png') }}" alt="">
+                        @endif
+                    </x-slot>
+                    <x-slot
+                        name="type_name">{{ $file->library_file_type_id ? $file->library_file_type->name : '' }}</x-slot>
+                </x-file-card>
+            @endforeach
+            @foreach ($course_files as $file)
+                <x-file-card>
+                    <x-slot name="title">{{ $file->name }}</x-slot>
+                    <x-slot name="url">{{ $file->url }}</x-slot>
+                    <x-slot name="icon">
+                        @if ($file->library_file_type_id == 1)
+                            <img src="{{ asset('assets/img/img_icon.png') }}" alt="">
+                        @elseif($file->library_file_type_id == 2)
+                            <img src="{{ asset('assets/img/video_icon.png') }}" alt="">
+                        @elseif($file->library_file_type_id == 3)
+                            <img src="{{ asset('assets/img/book_icon.png') }}" alt="">
+                        @endif
+                    </x-slot>
+                    <x-slot
+                        name="type_name">{{ $file->library_file_type_id ? $file->library_file_type->name : '' }}</x-slot>
+                </x-file-card>
+            @endforeach
+            @foreach ($product_files as $file)
+                <x-file-card>
+                    <x-slot name="title">{{ $file->name }}</x-slot>
+                    <x-slot name="url">{{ $file->url }}</x-slot>
+                    <x-slot name="icon">
+                        @if ($file->library_file_type_id == 1)
+                            <img src="{{ asset('assets/img/img_icon.png') }}" alt="">
+                        @elseif($file->library_file_type_id == 2)
+                            <img src="{{ asset('assets/img/video_icon.png') }}" alt="">
+                        @elseif($file->library_file_type_id == 3)
+                            <img src="{{ asset('assets/img/book_icon.png') }}" alt="">
+                        @endif
+                    </x-slot>
+                    <x-slot
+                        name="type_name">{{ $file->library_file_type_id ? $file->library_file_type->name : '' }}</x-slot>
+                </x-file-card>
+            @endforeach
+        </div>
+    @endif
 
 </div>

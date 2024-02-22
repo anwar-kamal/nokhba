@@ -49,12 +49,33 @@ tabs:
                             show_set_alt: true
                             type: assets
                             display: 'Main Image'
-                            icon: assets
                             listable: true
                             instructions_position: above
                             visibility: visible
                             replicator_preview: true
                             hide_display: false
+                            width: 50
+                        -
+                          handle: main_image_mob
+                          field:
+                            max_files: 1
+                            min_files: 1
+                            mode: list
+                            container: images
+                            restrict: false
+                            allow_uploads: true
+                            show_filename: true
+                            show_set_alt: true
+                            type: assets
+                            display: 'Main Image Mob'
+                            width: 50
+                            listable: hidden
+                            instructions_position: above
+                            visibility: visible
+                            replicator_preview: true
+                            hide_display: false
+                            validate:
+                              - required
                         -
                           handle: title
                           field:
@@ -62,7 +83,6 @@ tabs:
                             antlers: false
                             type: text
                             display: title
-                            icon: text
                             width: 50
                             listable: hidden
                             instructions_position: above
@@ -78,7 +98,6 @@ tabs:
                             antlers: false
                             type: text
                             display: 'word in button'
-                            icon: text
                             listable: hidden
                             instructions_position: above
                             visibility: visible
@@ -93,7 +112,6 @@ tabs:
                             antlers: false
                             type: textarea
                             display: content
-                            icon: textarea
                             listable: hidden
                             instructions_position: above
                             visibility: visible
@@ -108,10 +126,10 @@ tabs:
               visibility: visible
               replicator_preview: true
               hide_display: false
-              if:
-                title: 'equals home'
               validate:
                 - 'required_if:title,home'
+              if:
+                title: 'equals home'
           -
             handle: about_us_ar
             field:
@@ -939,9 +957,9 @@ tabs:
               replicator_preview: true
               hide_display: false
               validate:
-                - 'required_if:title,About Us'
+                - 'required_if:slug,about-us'
               if:
-                title: 'equals About Us'
+                slug: 'equals about-us'
           -
             handle: woman_section_ar
             field:
@@ -1016,8 +1034,9 @@ tabs:
               hide_display: false
               validate:
                 - 'required_if:title,About Us'
+                - 'required_if:slug,about-us'
               if:
-                title: 'equals About Us'
+                slug: 'equals about-us'
           -
             handle: what_we_offer_you_ar
             field:
@@ -1145,10 +1164,10 @@ tabs:
               visibility: visible
               replicator_preview: true
               hide_display: false
-              if:
-                title: 'equals About Us'
               validate:
                 - 'required_if:title,About Us'
+              if:
+                slug: 'equals about-us'
   sidebar:
     display: Sidebar
     sections:

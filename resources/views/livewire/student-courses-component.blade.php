@@ -75,6 +75,8 @@
         @else
             <div class=" flex items-center justify-center gap-8 ">
                 <img src="{{ asset('assets/img/no-dawarat.png') }}" alt="">
+                {{-- Anwar (seperate image and text)--}}
+                {{ __('messages.there are no courses') }}
             </div>
         @endif
     </div>

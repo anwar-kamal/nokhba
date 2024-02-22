@@ -152,16 +152,25 @@
 
 </div>
 
-<div class="bg-neutral-900 py-1.5 hidden md:block z-[999]">
+<div class="bg-neutral-900  hidden md:block z-[999] py-2">
     <div class="container  flex justify-between items-center relative" x-data="{ open: false }">
         <div class="cent gap-4 text-white">
             @if (auth('instructors')->user() || auth('customers')->user())
-                <div>
-                    <img src="https://wac-cdn.atlassian.com/dam/jcr:ba03a215-2f45-40f5-8540-b2015223c918/Max-R_Headshot%20(1).jpg?cdnVersion=1437"
-                        alt="" class=" w-11 h-11 rounded-full overflow-hidden cursor-pointer"
-                        x-on:click="open =! open">
-                    <ul class=" absolute bg-white p-4 top-12 rounded-2xl  z-[555555] drop-shadow border hidden"
-                        x-show="open" :class="open ? ' !block ' : ''">
+                <div class=" ">
+                    <button class="flex gap-3 items-center  " x-on:click="open =! open">
+                        <img src="https://wac-cdn.atlassian.com/dam/jcr:ba03a215-2f45-40f5-8540-b2015223c918/Max-R_Headshot%20(1).jpg?cdnVersion=1437"
+                            alt="" class=" w-11 h-11 rounded-full overflow-hidden ">
+                        <h3> {{ 'shadi ali' }}</h3>
+                        <div>
+                            <i class="fa-solid fa-chevron-up hidden" :class="open ? '!block' : ''" x-show=" open"></i>
+                            <i class="fa-solid fa-chevron-down" x-show=" !open"></i>
+                        </div>
+                    </button>
+                    <ul class=" absolute bg-white p-4 top-12 rounded-2xl  z-[555555] drop-shadow border hidden "
+                        x-show="open" :class="open ? ' !block ' : ''"
+                        x-transition:enter="transition transform ease-out duration-500"
+                        x-transition:enter-start="opacity-0 rtl:translate-y-[-50px] ltr:translate-y-[50px]"
+                        x-transition:enter-end="opacity-100 translate-x-0">
                         <li class="whitespace-nowrap">
                             <a href="{{ route('student.dashboard') }}" class="flex items-center gap-2">
                                 <img src="{{ asset('assets/img/icondashbord.svg') }}" alt="icondashbord">
@@ -213,68 +222,67 @@
         </div>
     </div>
 </div>
-<header class=" drop-shadow shadow-sm z-[51] sticky top-0 bg-white py-1.5 ">
-        <div class="container py-4 flex justify-between items-center">
-            <div class="cent gap-6">
-                <div id="logo">
-                    @if (basename(Request::path()) == 'dashboard')
-                        <a href="/en"><img src="{{ getImage(getGlobal('logo')['logo']) }}" alt="logo"
-                                class="aspect-square" width="75"></a>
-                    @else
-                        <a href="{{ get_page_permalink('home') }}"><img
-                                src="{{ getImage(getGlobal('logo')['logo']) }}" alt="logo" class="aspect-square"
-                                width="75"></a>
-                    @endif
-                </div>
-                <nav
-                    class="md:flex justify-center items-center hidden lg:gap-6 md:gap-3  text-center lg:text-lg md:text-sm capitalize">
-                    @foreach (Statamic::tag('nav:header') as $navItem)
-                        <a href="{{ get_page_permalink($navItem['url']) }}"
-                            class="font-semibold nav-link nav-link-ltr {{ URL::to('/' . $navItem['url']) == Url::current() ? 'current-nav-link' : '' }}">
-                            {{ $navItem[$title] }}
-                        </a>
-                    @endforeach
-                </nav>
+<header class=" drop-shadow-md shadow-sm z-[51] sticky top-0 bg-white py-2 ">
+    <div class="container py-4 flex justify-between items-center">
+        <div class="cent gap-6">
+            <div id="logo">
+                {{-- @if (basename(Request::path()) == 'dashboard')
+                    <a href="/en"><img src="{{ getImage(getGlobal('logo')['logo']) }}" alt="logo"
+                            class="aspect-square" width="75"></a>
+                @else --}}
+                    <a href="{{ get_page_permalink('home') }}"><img src="{{ getImage(getGlobal('logo')['logo']) }}"
+                            alt="logo" class="aspect-square" width="75"></a>
+                {{-- @endif --}}
             </div>
-            <div class="cent md:gap-6 gap-3">
-                <img src="{{ asset('assets/img/vision2030.svg') }}" alt="Signature" class="aspect-[2/1] w-[80px]">
-                <img class="hidden md:inline-flex" src="{{ asset('assets/img/line.png') }}" alt="line">
-                <div class="relative">
-                    <a href="/cart">
-                        @if (session()->get('totalCardQty'))
-                            <span
-                                class="absolute -top-2.5 -right-2.5 rounded-full md:w-5 w-4 h-4 md:h-5 bg-[#9F1916] cent text-white text-sm">{{ session()->get('totalCardQty') }}</span>
-                        @endif
-                        <img src="{{ asset('assets/img/cart_black.svg') }}" alt="cart"
-                            class="md:w-8 md:h-8 w-6 h-6">
+            <nav
+                class="md:flex justify-center items-center hidden lg:gap-6 md:gap-3  text-center lg:text-lg md:text-sm capitalize">
+                @foreach (Statamic::tag('nav:header') as $navItem)
+                    <a href="{{ get_page_permalink($navItem['url']) }}"
+                        class="font-semibold nav-link nav-link-ltr {{ URL::to('/' . $navItem['url']) == Url::current() ? 'current-nav-link' : '' }}">
+                        {{ $navItem[$title] }}
+                    </a>
+                @endforeach
+            </nav>
+        </div>
+        <div class="cent md:gap-6 gap-3">
+            <img src="{{ asset('assets/img/vision2030.svg') }}" alt="Signature" class="aspect-[2/1] w-[80px]">
+            <img class="hidden md:inline-flex" src="{{ asset('assets/img/line.png') }}" alt="line">
+            <div class="relative">
+                <a href="/cart">
+                    @if (session()->get('totalCardQty'))
+                        <span
+                            class="absolute -top-2.5 -right-2.5 rounded-full md:w-5 w-4 h-4 md:h-5 bg-[#9F1916] cent text-white text-sm">{{ session()->get('totalCardQty') }}</span>
+                    @endif
+                    <img src="{{ asset('assets/img/cart_black.svg') }}" alt="cart"
+                        class="md:w-8 md:h-8 w-6 h-6">
+                </a>
+            </div>
+            @if (auth('instructors')->user() || auth('customers')->user())
+                <div>
+                    <a href="#">
+                        <img src="{{ asset('assets/img/notfication.svg') }}" alt="cart"
+                            class="md:w-7 md:h-7 w-6 h-6">
                     </a>
                 </div>
-                @if (auth('instructors')->user() || auth('customers')->user())
-                    <div>
-                        <a href="#">
-                            <img src="{{ asset('assets/img/notfication.svg') }}" alt="cart"
-                                class="md:w-7 md:h-7 w-6 h-6">
+            @endif
+            @if (basename(Request::path()) == 'dashboard')
+                <div class="hidden md:block relative">
+                    @if (App::getLocale() == 'ar')
+                        <a href="{{ route('change.locale', ['lang' => 'en']) }}" class="flex items-center gap-1">
+                            <img src="{{ asset('assets/img/en.svg') }}" class="w-8 h-6 mt-1">
+                            <span>Eng</span>
                         </a>
-                    </div>
-                @endif
-                @if (basename(Request::path()) == 'dashboard')
-                    <div class="hidden md:block relative">
-                        @if (App::getLocale() == 'ar')
-                            <a href="{{ route('change.locale', ['lang' => 'en']) }}" class="flex items-center gap-1">
-                                <img src="{{ asset('assets/img/en.svg') }}" class="w-8 h-6 mt-1">
-                                <span>Eng</span>
-                            </a>
-                        @else
-                            <a href="{{ route('change.locale', ['lang' => 'ar']) }}" class="flex items-center gap-1">
-                                <span>Ar</span>
-                                <img src="{{ asset('assets/img/ar.png') }}" class="w-8 h-6">
-                            </a>
-                        @endif
-                    </div>
-                @endif
-                <button @click="toggelMenu =!toggelMenu" class="inline-flex md:hidden order-last relative">
-                    <img src="{{ asset('assets/img/toggel.png') }}" width="35" height="35" alt="">
-                </button>
-            </div>
+                    @else
+                        <a href="{{ route('change.locale', ['lang' => 'ar']) }}" class="flex items-center gap-1">
+                            <span>Ar</span>
+                            <img src="{{ asset('assets/img/ar.png') }}" class="w-8 h-6">
+                        </a>
+                    @endif
+                </div>
+            @endif
+            <button @click="toggelMenu =!toggelMenu" class="inline-flex md:hidden order-last relative">
+                <img src="{{ asset('assets/img/toggel.png') }}" width="35" height="35" alt="">
+            </button>
         </div>
+    </div>
 </header>

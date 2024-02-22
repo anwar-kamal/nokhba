@@ -1,39 +1,42 @@
-
-<div x-data="{ sort: 'empty', open: false }">
-    <div class=" w-full  flex justify-center md:justify-between items-center  flex-wrap gap-x-2">
+<div x-data="{ sort: 'أختار', open: false }" class="relative">
+    <div class=" w-full  flex justify-center md:justify-between items-center  flex-wrap gap-x-2 relative">
         <form action="" class="my-5 relative   min-w-[250px]">
             <input type="search" class=" w-full drop-shadow-xl ltr:-mr-10 rtl:-ml-10" name="" id=""
                 placeholder="ابحث هنا...">
             <button class=" button-search z-40 absolute top-0 bottom-0  ltr:right-0 rtl:left-0">
                 <img src="{{ asset('assets/img/search-normal.png') }}" alt="" class=""></button>
         </form>
-        <div class=" relative">
+
+        <div class="relative">
             <div class="px-4 py-2 gap-4 bg-white rounded-2xl border border-neutral-200 justify-between items-center inline-flex cursor-pointer"
-                @click="open =!open">
+                @click="open =!open" @click.away="open = false">
                 <div class="text-neutral-700 text-sm font-normal font-['Somar Sans'] leading-[14px]">
-                    الفصول
-                    الدراسية
+                    <span x-text="sort"></span>
                 </div>
                 <div>
-                    <i class="fa-solid fa-chevron-down" x-show="!open"></i>
-                    <i class="fa-solid fa-chevron-up" x-show="open"></i>
+                    <div x-show="!open">
+                        <i class="fa-solid fa-chevron-down "></i>
+                    </div>
+                    <div class="hidden" x-show="open" :class="open ? ' !block ' : ''"><i
+                            class="fa-solid fa-chevron-up "></i>
+                    </div>
                 </div>
             </div>
-            <ul class=" absolute top-9 right-0 left-0  z-30 bg-white border rounded-xl drop-shadow-md  text-zinc-900 overflow-hidden tracking-wider grid sm:gap-1  my-2"
-                x-show="open">
-
-                <li class="hover:bg-primary hover:text-white rounded-xl sm:px-6 sm:p-3 cursor-pointer  whitespace-nowrap sm:text-base px-2 text-neutral-700 text-sm font-normal font-['Somar Sans'] leading-[14px] "
-                    @click="sort='empty'" :class="sort === 'empty' ? 'bg-red-50 text-red-900' : ''">
+            <ul class=" absolute hidden top-11 rtl:left-0 ltr:right-0 max-w-64 min-w-40  z-30 bg-white border rounded-xl drop-shadow-md  text-zinc-900  tracking-wider  sm:gap-1" @click="open = !open"
+                :class="open ? '!grid' : ''" x-show="open">
+                <li class="hover:bg-primary hover:text-white rounded-xl sm:px-6 sm:p-3 cursor-pointer   sm:text-base px-2 text-neutral-700 text-sm font-normal font-['Somar Sans'] leading-[14px] "
+                    @click="sort='دورات اليوم'; open = !open" :class="sort === 'empty' ? 'bg-red-50 text-red-900' : ''">
                     دورات اليوم</li>
-                <li class="hover:bg-primary hover:text-white rounded-xl sm:px-6 sm:p-3 cursor-pointer  whitespace-nowrap sm:text-base px-2 text-neutral-700 text-sm font-normal font-['Somar Sans'] leading-[14px] "
-                    @click="sort='finished'" :class="sort === 'finished' ? 'bg-red-50 text-red-900' : ''">
+                <li class="hover:bg-primary hover:text-white rounded-xl sm:px-6 sm:p-3 cursor-pointer   sm:text-base px-2 text-neutral-700 text-sm font-normal font-['Somar Sans'] leading-[14px] "
+                    @click="sort='    دورات مكتملة'; open = !open"
+                    :class="sort === 'finished' ? 'bg-red-50 text-red-900' : ''">
                     دورات مكتملة</li>
-                <li class="hover:bg-primary hover:text-white rounded-xl sm:px-6 sm:p-3 cursor-pointer  whitespace-nowrap sm:text-base px-2 text-neutral-700 text-sm font-normal font-['Somar Sans'] leading-[14px] "
-                    @click="sort='all'" :class="sort === 'all' ? 'bg-red-50 text-red-900' : ''">
-                    جميع </li>
-
+                <li class="hover:bg-primary hover:text-white rounded-xl sm:px-6 sm:p-3 cursor-pointer   sm:text-base px-2 text-neutral-700 text-sm font-normal font-['Somar Sans'] leading-[14px] "
+                    @click="sort='    الجميع'; open = !open" :class="sort === 'all' ? 'bg-red-50 text-red-900' : ''">
+                    الجميع </li>
             </ul>
         </div>
+
 
     </div>
     <div class="grid gap-8 py-8">
@@ -71,8 +74,8 @@
                         <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 ">
                             <th scope="row"
                                 class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white flex gap-2 items-center ">
-                                <img src="{{ asset('assets/img/table-image.png') }}" alt="" width="50" height="50"
-                                    class=" rounded-lg">
+                                <img src="{{ asset('assets/img/table-image.png') }}" alt="" width="50"
+                                    height="50" class=" rounded-lg">
                                 <div class="text-neutral-800 text-sm font-medium tracking-wide ">
                                     لغة انجليزية (1) - مستوي اول</div>
                             </th>
@@ -98,8 +101,8 @@
                         <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 ">
                             <th scope="row"
                                 class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white flex gap-2 items-center ">
-                                <img src="{{ asset('assets/img/table-image.png') }}" alt="" width="50" height="50"
-                                    class=" rounded-lg">
+                                <img src="{{ asset('assets/img/table-image.png') }}" alt="" width="50"
+                                    height="50" class=" rounded-lg">
                                 <div class="text-neutral-800 text-sm font-medium tracking-wide ">
                                     لغة انجليزية (1) - مستوي اول</div>
                             </th>
@@ -125,8 +128,8 @@
                         <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 ">
                             <th scope="row"
                                 class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white flex gap-2 items-center ">
-                                <img src="{{ asset('assets/img/table-image.png') }}" alt="" width="50" height="50"
-                                    class=" rounded-lg">
+                                <img src="{{ asset('assets/img/table-image.png') }}" alt="" width="50"
+                                    height="50" class=" rounded-lg">
                                 <div class="text-neutral-800 text-sm font-medium tracking-wide ">
                                     لغة انجليزية (1) - مستوي اول</div>
                             </th>

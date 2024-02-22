@@ -39,11 +39,11 @@
         <x-header-component></x-header-component>
     @endif
     @if (isset($bread_crumb))
-        <main class="min-h-[283px]">
+        <main class="min-h-[250px]">
             <div class="flex justify-center items-start pt-14 relative">
-                <div class="h-[283px] bg-[#2B6DF5] absolute top-0 w-full">
+                <div class="h-[250px] bg-[#2B6DF5] absolute top-0 w-full">
                     <div class="absolute inset-0">
-                        <img src="{{ getImage('assets/img/form-vector.png') }}" alt="form-vector"
+                        <img src="{{ asset('assets/img/form-vector.png') }}" alt="form-vector"
                             class="w-full h-full z-50">
                     </div>
                 </div>
@@ -84,31 +84,31 @@
                             </div>
                         @endif
                         @if (isset($content_blogs))
-                            <div class="container grid lg:grid-cols-3 gap-6">
+                            <div class="container grid lg:grid-cols-3 gap-6 content-start">
                                 <img class="md:col-span-2 w-full rounded-2xl" src="{{ getImage($main_image) }}" />
-                                <div x-data="{ isFixed: false }" x-init="window.addEventListener('scroll', () => { isFixed = window.scrollY > 10 })" :class="{ 'fixed': isFixed }"
-                                    class="bg-white rounded-[32px] fixed left-5 border border-neutral-200 p-5">
+                                <div
+                                    class="bg-white rounded-[32px] border border-neutral-200 p-5 self-start">
                                     <div class=" text-neutral-800 text-[22px] font-semibold  capitalize ">
                                         {{ __('messages.Proposed diplomas') }}</div>
                                     <div class="grid gap-4 py-4">
                                         @php
                                             $entry = Statamic\Entries\Entry::query();
                                             $entry->where('collection', 'Diplomas');
-                                            $entry->limit(3);
+                                            $entry->limit(2);
                                             $diplomas = $entry->get();
                                         @endphp
                                         @foreach ($diplomas as $diploma)
                                             <a href="{{ URL::to($diploma['slug']) }}">
-                                                <div class="grid grid-cols-3 gap-2">
+                                                <div class="grid grid-cols-4 gap-2">
                                                     <div>
                                                         <img src="{{ getImage($diploma->card_image) }}"
-                                                            class="w-full h-full rounded-2xl">
+                                                            class="w-full  rounded-2xl">
                                                     </div>
                                                     @php
                                                         $title = langContent('title');
                                                         $card_content = langContent('card_content');
                                                     @endphp
-                                                    <div class="col-span-2 grid gap-2">
+                                                    <div class="col-span-3 grid gap-2">
                                                         <div
                                                             class="text-neutral-800 text-base font-semibold  capitalize leading-none">
                                                             {{ $diploma->$title }}
@@ -144,7 +144,7 @@
     <script src="{{ asset('assets/js/swiper.js') }}"></script>
     <script src="{{ asset('assets/js/aos.js') }}"></script>
     <script src="{{ asset('assets/js/flowbit.js') }}"></script>
-    
+
     <script>
         AOS.init({
             disable: false, // accepts following values: 'phone', 'tablet', 'mobile', boolean, expression or function

@@ -2,18 +2,26 @@
 
 namespace App\Livewire;
 
+use Carbon\Carbon;
+use App\Models\Product;
 use Livewire\Component;
-use App\Models\InstallmentPackage;
 use Illuminate\Support\Facades\Session;
 
 class CheckoutComponent extends Component
 {
-    public $page;
+    public $page, $subscribeDiploma, $packages;
 
-    // public function mount()
-    // {
-    //     $this->tax();
-    // }
+    public function mount()
+    {
+        $this->subscribeDiploma = Product::find(Session::get('subscribeDiploma'));
+        $this->packages = $this->subscribeDiploma
+            ->installment_packages()
+            ->where('activate', '=', 1)
+            ->whereDate('start_date', '<=', now())
+            ->whereDate('end_date', '>=', now())
+            ->limit(2)
+            ->get();
+    }
 
     public function render()
     {

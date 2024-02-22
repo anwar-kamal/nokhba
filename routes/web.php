@@ -21,8 +21,9 @@ use App\Http\Controllers\CustomForgotPasswordController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-Route::get('/get_objects/create', [GetOptionsController::class ,"create"])->name('extend.create');
-Route::get('/get_objects/{request}', [GetOptionsController::class ,"get_objects"])->name('extend.get_objects');
+
+Route::get('/get_objects/create', [GetOptionsController::class, "create"])->name('extend.create');
+Route::get('/get_objects/{request}', [GetOptionsController::class, "get_objects"])->name('extend.get_objects');
 // Logs
 Route::get('/logs', [LogViewerController::class, 'index']);
 // Change Locale

@@ -10,13 +10,8 @@
         <x-slot name="bread_crumb">{{ $bread_crumb->value() }}</x-slot>
     @endif
     <x-slot name="content">
-        <section class=" fixed inset-0" x-data="{ modal: false }">
-            @php
-                $main_image = langContent('main_image');
-            @endphp
-            <img src="{{ getImage($page->$main_image) }}" alt=""
-                class="w-full h-full hidden md:block inset-0 fixed">
+        <div class="relative">
             @livewire('login-component')
-        </section>
+        </div>
     </x-slot>
 </x-layout-component>

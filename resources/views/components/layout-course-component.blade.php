@@ -13,21 +13,21 @@
                                         class=" w-6 h-6">
                                     <p
                                         class="text-start textblack text-lg font-normal font-['Open Sans'] leading-[21px]">
-                                        {{ $page->course_includes[0]->number_of_hours }} ساعة</p>
+                                        {{ $page->course_includes[0]->number_of_hours }} {{ __("messages.hour") }}</p>
                                 </div>
                                 <div class="w-full flex justify-start gap-2">
                                     <img src="{{ getImage('assets/img/lessons_Icon.svg') }}" alt="lessons_Icon"
                                         class=" w-6 h-6">
                                     <p
                                         class="text-start textblack text-lg font-normal font-['Open Sans'] leading-[21px]">
-                                        {{ $page->course_includes[0]->number_of_lessons }} دروس</p>
+                                        {{ $page->course_includes[0]->number_of_lessons }} {{ __("messages.Tutorials") }}</p>
                                 </div>
                                 <div class="w-full flex justify-start gap-2">
                                     <img src="{{ getImage('assets/img/course_completion_certificate.svg') }}"
                                         alt="course_completion_certificate" class=" w-6 h-6">
                                     <p
                                         class="text-start textblack text-lg font-normal font-['Open Sans'] leading-[21px]">
-                                        شهادة إتمام الدورة</p>
+                                        {{ __('messages.Course completion certificate') }}</p>
                                 </div>
                                 <div class="w-full flex justify-start gap-2">
                                     <img src="{{ getImage('assets/img/level.svg') }}" alt="level" class=" w-6 h-6">
@@ -53,7 +53,6 @@
                     <div class=" flex justify-between items-center">
                         @php
                             $title = langContent('title');
-                            // $rating = langContent('rating');
                         @endphp
                         <div class="diploma-title !md:text-center !text-start">
                             {{ $page->$title ? $page->$title : $page->title }}

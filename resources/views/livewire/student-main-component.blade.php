@@ -61,7 +61,7 @@
                 }
 
                 $count_current_session = $course->course_sessions()->where('status', '!=', 'canceled')->where('session_date', '<=', date('Y-m-d'))->count();
-                $count_attendance = $course_customer->course_customer_attendances()->where('attend', 1)->count();
+                $count_attendance = $course_customer ? $course_customer->course_customer_attendances()->where('attend', 1)->count() : 0;
                 if ($count_current_session && $count_current_session > 0) {
                     $per = round(($count_attendance / $count_current_session) * 100, 2);
                 } else {
@@ -80,7 +80,8 @@
                 <x-slot name="link_title">{{ __('messages.complete course') }}</x-slot>
             </x-image-card>
         @empty
-            {{-- no courses --}}
+            {{-- Anwar (no courses) --}}
+            {{ __('messages.there are no courses') }}
         @endforelse
 
         {{-- final exams --}}
@@ -98,6 +99,8 @@
         </div>
         @if (!empty($final_exams))
             <x-table>
+                <x-slot name="with_responsive">{{true}}
+                </x-slot>
                 <x-slot name="head">
                     <tr>
                         <x-th class="px-4 py-2" scope="col">
@@ -147,7 +150,7 @@
                             <x-td>
                                 @php
                                     $course_queizes = App\Services\CustomerService::course_quizes_exam_ids($course->id);
-                                    $courseCustomer = $exam->course_customer;
+                                    $courseCustomer = $exam ? $exam->course_customer : null;
 
                                     $course_customer_exam = $courseCustomer ? $courseCustomer->course_customer_exams()->whereNotNull('token')->whereNotIn('course_exam_id', $course_queizes)->first() : false;
                                 @endphp
@@ -212,7 +215,8 @@
                 @endforeach
             </div>
         @else
-            {{-- no exams --}}
+            {{-- Anwar (no exams) --}}
+            {{ __("messages.there are no final exams yet") }}
         @endif
     </div>
 
@@ -239,11 +243,11 @@
                                 <span><img src="{{ asset('assets/img/time.png') }}" alt=""></span>
                                 <span class="text-zinc-600 text-sm font-normal ">
                                     @if (App::getLocale() == 'ar')
-                                        <span>{{ date_format(date_create($course_session->from), 'g:i') . ($date_to->format('A') == 'AM' ? 'ص' : 'م') }}</span>
-                                        - <span>{{ date_format(date_create($course_session->to), 'g:i') . ($date_to->format('A') == 'AM' ? 'ص' : 'م') }}</span>
+                                        <span>{{ date_format(date_create($course_session->from), 'g:i') . (date_format(date_create($course_session->from), 'A')  == 'AM' ? 'ص' : 'م') }}</span>
+                                        - <span>{{ date_format(date_create($course_session->to), 'g:i') . (date_format(date_create($course_session->from), 'A')  == 'AM' ? 'ص' : 'م') }}</span>
                                     @else
-                                        <span>{{ date_format(date_create($course_session->from), 'g:i') . $date_to->format('A') }}</span>
-                                        - <span>{{ date_format(date_create($course_session->to), 'g:i') . $date_to->format('A') }}</span>
+                                        <span>{{ date_format(date_create($course_session->from), 'g:i') . date_format(date_create($course_session->from), 'A')  }}</span>
+                                        - <span>{{ date_format(date_create($course_session->to), 'g:i') . date_format(date_create($course_session->from), 'A')  }}</span>
                                     @endif
 
                                 </span>
@@ -251,7 +255,8 @@
                         </div>
                     </div>
                 @empty
-                    {{-- no sessions --}}
+                    {{-- Anwar (no sessions) --}}
+                    {{ __('messages.there are no lectures today') }}
                 @endforelse
             </div>
         </div>
@@ -271,7 +276,7 @@
                 </button>
             </div>
             <div class="  p-1  h-[700px] overflow-y-auto  grid gap-4  content-start overflow-hidden ">
-                @forelse (App\Services\CustomerService::quizes()->take(2) as $quiz)
+                @forelse (App\Services\CustomerService::quizes()->get()->take(2) as $quiz)
                     @php
                         $cs = App\Services\CustomerService::course_course_customer($quiz->course_id)->first();
                         if ($cs) {
@@ -284,7 +289,7 @@
                     @endphp
                     <x-text-card>
                         <x-slot name="badge_icon">{{ asset('assets/img/date_blue.png') }}</x-slot>
-                        <x-slot name="badge">{{ $quiz->session_date }}</x-slot>
+                        <x-slot name="badge">{{ \Carbon\Carbon::createFromFormat('Y-m-d', $quiz->session_date)->translatedFormat('d M Y') }}</x-slot>
                         <x-slot name="title">
                             @if ($quiz->exam_id && $quiz->exam->exam_id)
                                 {{ $quiz->exam->exam->name }}
@@ -296,7 +301,9 @@
                         <x-slot name="link_title">{{ __('messages.start exam') }}</x-slot>
                     </x-text-card>
                 @empty
-                    {{-- no quizes --}}
+                    {{-- Anwar (no quizes) --}}
+                    {{ __('messages.there are no periodic exams') }}
+
                 @endforelse
             </div>
         </div>

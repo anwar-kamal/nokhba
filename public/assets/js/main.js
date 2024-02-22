@@ -15,7 +15,7 @@ const scrollManager = {
 
     init: () => document.addEventListener( 'DOMContentLoaded', scrollManager.setupEventListeners ),
 }
-scrollManager.init();
+scrollManager.init()
 
 
 
@@ -29,7 +29,7 @@ function toggleButtonState ( checkboxId, buttonId ) {
     const checkbox = document.getElementById( checkboxId )
     const button = document.getElementById( buttonId )
     if ( checkbox && button ) {
-        checkbox.addEventListener( 'change', () =>{
+        checkbox.addEventListener( 'change', () => {
             updateButtonAppearance( checkbox.checked, button )
         } )
     }
@@ -94,7 +94,7 @@ function togglePassword ( passwords, eyes ) {
     toggleEyeClass( "fa-eye", "fa-eye-slash" )
     toggleEyeClass( "fa-eye-slash", "fa-eye" )
 
-    const type =password.getAttribute( "type" ) === "password" ? "text" : "password"
+    const type = password.getAttribute( "type" ) === "password" ? "text" : "password"
     password.setAttribute( "type", type )
 }
 
@@ -102,24 +102,25 @@ function togglePassword ( passwords, eyes ) {
 
 
 const passwordToggler = {
-     password : document.getElementById( passwordsId ),
-     eye :document.getElementById( eyesId ),
-    toggleEyeClass: (currentClass, newClass ) => {
-        if ( passwordToggler.eye.classList.contains( currentClass ) ) {
-            passwordToggler.eye.classList.replace( currentClass, newClass )
+    toggleEyeClass: ( currentClass, newClass, eyeId ) => {
+        let eye = document.getElementById( eyeId )
+        if ( eye ) {
+            if ( eye.classList.contains( currentClass ) ) {
+                eye.classList.replace( currentClass, newClass )
+            }
         }
     },
-    togglePassword: () => {
-        toggleEyeClass( eye, "fa-eye", "fa-eye-slash" )
-        toggleEyeClass( eye, "fa-eye-slash", "fa-eye" )
-        passwordToggler.password.getAttribute( "type" ) === "password" ? "text" : "password"
-        password.setAttribute( "type", type )
+    togglePassword: ( passwordId, eyeId ) => {
+        let password = document.getElementById( passwordId )
+        if ( password) {
+            password.getAttribute( "type" ) === "password" ? password.setAttribute( "type", "text" ) : password.setAttribute( "type", "password" )
+            passwordToggler.toggleEyeClass( "fa-eye", "fa-eye-slash", eyeId )
+            passwordToggler.toggleEyeClass( "fa-eye-slash", "fa-eye", eyeId )
+        }
     },
 }
 
 passwordToggler.togglePassword( "yourPasswordInputId", "yourEyeIconId" );
-
-
 
 
 

@@ -122,4 +122,7 @@ class CourseCustomerExam extends Model
         //dd($score .' = '. $question_score );
         return round( $score / $question_score , 2);
     }
+    public function get_all_cc_exam_eval_query(){
+        return CourseCustomerExamEvaluation::where('course_customer_id','=',$this->course_customer_id)->where('course_exam_id','=',$this->course_exam_id);
+    }
 }

@@ -15,7 +15,7 @@
         @endphp
         <section id="distance_learning" class="relative">
             <div class="container grid lg:grid-cols-2 gap-5 ">
-                <div class="flex-col justify-start gap-4 inline-flex" data-aos="zoom-out" data-aos-duration="1000"
+                <div class="flex-col justify-start gap-4 inline-flex" data-aos="zoom-out" data-aos-duration="500"
                     data-aos-easing="ease-in-out">
                     <div class="flex gap-2">
                         <h2 class="section-title text-neutral-800 flex gap-4 rtl:before:bg-right ltr:before:bg-left">
@@ -29,9 +29,9 @@
                 </div>
                 <div class="relative  flex flex-col gap-8">
                     @foreach ($page->$distance_learning[0]->list_with_icon as $list)
-                        <div class="lg:w-[475px] custom__drop__shadow w-full h-[82px] @if ($list->order_show == 2) lg:rtl:mr-10 lg:ltr:ml-10 @endif bg-[#f7f7f7] rounded-2xl grid   gap-x-4 grid-cols-6 rtl:pr-3 ltr:pl-3 "
+                        <div class="lg:w-[475px] w-full h-[82px] custom__drop__shadow border border-gray-50 @if ($list->order_show == 2) lg:rtl:mr-10 lg:ltr:ml-10 @endif  rounded-2xl grid   gap-x-4 grid-cols-6 rtl:pr-3 ltr:pl-3  "
                             data-aos="fade-right" data-aos-duration="500"
-                            @if ($list->order_show == 1) data-aos-delay="300" @elseif($list->order_show == 2) data-aos-delay="1000" @else data-aos-delay="1500" data-aos-delay="50" @endif
+                            @if ($list->order_show == 1)  @elseif($list->order_show == 2) data-aos-delay="300" @else data-aos-delay="700" data-aos-delay="50" @endif
                             data-aos-easing="ease-in-out">
                             <div class=" col-span-1 flex justify-between items-center relative">
                                 @if ($list->order_show == 1)
@@ -81,7 +81,7 @@
                     جوانب تجعله أساسيًا وحيويًا في تعزيز دور المرأة السعودية في المجتمع وتمكينها من تحقيق طموحاتها
                     العلمية والمهنية، ومن هذه الجوانب:
                 </div>
-                <div class=" absolute -bottom-6 flex justify-between items-center w-full z-[55] px-2 ">
+                <div class=" absolute -bottom-6 flex justify-between items-center w-full  px-2 ">
                     <img src="{{ asset('assets/img/vector-remote-right.png') }}" alt="" class=" max-md:h-12 "
                         data-aos="flip-right" data-aos-delay="300" data-aos-duration="1000"
                         data-aos-easing="ease-in-out">

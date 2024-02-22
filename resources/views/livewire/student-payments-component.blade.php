@@ -9,7 +9,7 @@
                     الأقساط</div>
             </div>
             <div class=" flex justify-end ">
-                <img src="./assets/studen-aksaat.png" alt="">
+                <img src="{{ asset('assets/img/studen-aksaat.png') }}" alt="">
             </div>
         </div>
         <div class="w-full h-[90px] bg-white rounded-2xl border border-neutral-200 grid grid-cols-2 p-5 ">
@@ -20,7 +20,7 @@
                     مدفوعات</div>
             </div>
             <div class=" flex justify-end ">
-                <img src="./assets/student-madfo3at.png" alt="">
+                <img src="{{ asset('assets/img/student-madfo3at.png') }}" alt="">
             </div>
         </div>
         <div class="w-full h-[90px] bg-white rounded-2xl border border-neutral-200 grid grid-cols-2 p-5 ">
@@ -31,7 +31,7 @@
                     الدورات</div>
             </div>
             <div class=" flex justify-end ">
-                <img src="./assets/dawrat-7alia.png " alt="">
+                <img src="{{ asset('assets/img/dawrat-7alia.png') }} " alt="">
             </div>
         </div>
     </div>
@@ -221,7 +221,7 @@
                         <div class="text-neutral-700 text-base font-semibold font-['Somar Sans'] capitalize leading-none">
                             575.00 ر.س</div>
                     </div>
-                    <div> <img src="./assets/task-complete.png" alt="" width="40" height="40">
+                    <div> <img src="{{ asset('assets/img/task-complete.png') }}" alt="" width="40" height="40">
                     </div>
                 </div>
                 <div class=" h-0.5 opacity-60 bg-neutral-200 rounded-[100px] md:hidden">
@@ -252,7 +252,7 @@
                         <div class="text-neutral-700 text-base font-semibold font-['Somar Sans'] capitalize leading-none">
                             575.00 ر.س</div>
                     </div>
-                    <div> <img src="./assets/task-complete.png" alt="" width="40" height="40">
+                    <div> <img src="{{ asset('assets/img/task-complete.png') }}" alt="" width="40" height="40">
                     </div>
                 </div>
                 <div class=" h-0.5 opacity-60 bg-neutral-200 rounded-[100px] md:hidden">
@@ -426,7 +426,7 @@
                         <div class="text-neutral-700 text-base font-semibold font-['Somar Sans'] capitalize leading-none">
                             575.00 ر.س</div>
                     </div>
-                    <div> <img src="./assets/task-complete.png" alt="" width="40" height="40">
+                    <div> <img src="{{ asset('assets/img/task-complete.png') }}" alt="" width="40" height="40">
                     </div>
                 </div>
                 <div class=" h-0.5 opacity-60 bg-neutral-200 rounded-[100px] md:hidden">

@@ -17,8 +17,7 @@
                     @enderror
                 </div>
                 <div class="flex flex-col">
-                    <label class="login" for="phone">{{ __('messages.Mobile number') }}<span
-                            class="text-red-600">
+                    <label class="login" for="phone">{{ __('messages.Mobile number') }}<span class="text-red-600">
                             *</span></label>
                     <input type="text" class="drop-shadow-sm" id="phone" wire:model.defer='phone'
                         placeholder="{{ __('messages.Mobile number') }}">
@@ -27,8 +26,7 @@
                     @enderror
                 </div>
                 <div class="flex flex-col">
-                    <label class="login" for="email">{{ __('messages.email') }}<span
-                            class="text-red-600">
+                    <label class="login" for="email">{{ __('messages.email') }}<span class="text-red-600">
                             *</span></label>
                     <input type="email" class=" drop-shadow-sm" id="email" wire:model.defer='email'
                         placeholder="{{ __('messages.email') }}">
@@ -42,16 +40,18 @@
                             *</span></label>
                     <select class="text-lg w-full " wire:model.defer="diploma">
                         <option disabled selected> اختار</option>
-                        <option value="op1">op1 45465693</option>
-                        <option value="op2">op245785875</option>
+                        {{-- @foreach ($rrr as $r) --}}
+                            <option value="op1">op1 45465693</option>
+                            <option value="op1">op1 45465693</option>
+                        {{-- @endforeach --}}
                     </select>
-                        @error('diploma')
+                    @error('diploma')
                         <span class="text-red-600 text-start">{{ $message }}</span>
                     @enderror
                 </div>
-                <div class="flex justify-start">
-                    <button wire:click="send()" class="button-sec w-[80%]">{{ __('messages.send') }}</button>
-                </div>
+            </div>
+            <div class="flex justify-end mt-6 w-full">
+                <button wire:click="send()" class="button-sec w-1/3">{{ __('messages.send') }}</button>
             </div>
         </div>
     </div>

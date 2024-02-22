@@ -15,4 +15,10 @@
     <script src="{{ asset('assets/js/main-swiper.js') }}" defer></script>
     <link href="{{ asset('assets/css/custom.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <style>
+        @font-face {
+            font-family: 'Somar Sans';
+            src: url("public/fonts/somarsans-medium.ttf") format('truetype')
+        }
+    </style>
 </head>

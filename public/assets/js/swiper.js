@@ -1,8 +1,8 @@
 {
     /* <script src="{{ asset('asset/js/main-swiper.js') }}"></script> */
 }
-document.addEventListener("DOMContentLoaded", function () {
-    var swiper = new Swiper(".mainSwiper", {
+document.addEventListener( "DOMContentLoaded", function () {
+    var swiper = new Swiper( ".mainSwiper", {
         loop: true,
         pagination: {
             el: ".swiper-pagination",
@@ -11,10 +11,10 @@ document.addEventListener("DOMContentLoaded", function () {
             delay: 3000,
             disableOnInteraction: false,
         },
-    });
-});
-document.addEventListener("DOMContentLoaded", function () {
-    var swiper = new Swiper(".blogsSwiper", {
+    } )
+} )
+document.addEventListener( "DOMContentLoaded", function () {
+    var swiper = new Swiper( ".blogsSwiper", {
         loop: true,
         pagination: {
             el: ".swiper-pagination",
@@ -23,10 +23,10 @@ document.addEventListener("DOMContentLoaded", function () {
             delay: 3000,
             disableOnInteraction: false,
         },
-    });
-});
-document.addEventListener("DOMContentLoaded", function () {
-    var swiper = new Swiper(".ratingSwiper", {
+    } )
+} )
+document.addEventListener( "DOMContentLoaded", function () {
+    var swiper = new Swiper( ".ratingSwiper", {
         loop: true,
         pagination: {
             el: ".swiper-pagination",
@@ -54,5 +54,24 @@ document.addEventListener("DOMContentLoaded", function () {
                 spaceBetween: 30,
             },
         },
-    });
-});
+    } )
+
+    function setEqualHeight () {
+        let slides = document.querySelectorAll( '.ratingSwiper .swiper-slide' )
+        let maxHeight = 0
+
+        slides.forEach( slide => {
+            slide.style.height = ''
+            if ( slide.offsetHeight > maxHeight ) {
+                maxHeight = slide.offsetHeight
+            }
+        } )
+
+        slides.forEach( slide => {
+            slide.style.height = maxHeight + 'px'
+        } )
+    }
+    setEqualHeight()
+    window.addEventListener( 'resize', setEqualHeight )
+} )
+

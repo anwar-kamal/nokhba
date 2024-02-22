@@ -81,4 +81,16 @@ class CourseSession extends Model
     public function exam(){
         return $this->belongsTo(CourseExam::class, 'exam_id', 'id');
     }
+
+    public function is_attend($cs_id){
+        $cs = CourseCustomer::find($cs_id);
+        if ($cs){
+            $attend = ($cs->course_customer_attendances()->where('course_session_id',$this->id)->first());
+
+            if ($attend)
+                return $attend->attend;
+        }
+
+        return false ;
+    }
 }

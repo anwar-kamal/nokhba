@@ -14,17 +14,17 @@
     top: 42px;
 }
 
-.image-bg {
-    background-image: url('../img/vector-bg.png');
+.she7ata{
+background-image: url(../img/she7ata.svg);
+background-size: cover;
+background-position: left;
+}
+.she7ata:where([dir="ltr"], [dir="ltr"] *) {
+background-image: url(../img/she7ata-ltr.svg);
+background-position: right;
+
 }
 
-
-/* @media (width >=600px) {
-    .bg-section {
-        background-image: url(../img/back.png);
-
-    }
-} */
 
 .parallax-container {
     position: relative;

@@ -51,14 +51,12 @@
                     @endphp
                     @foreach ($page->$hero_section as $slide)
                         <div class="swiper-slide w-full relative">
-                            @if ($slide->main_image)
+                            {{-- @if ($slide->main_image)
                                 <img src="{{ getImage($slide->main_image) }}" alt="{{ $slide->main_image['alt'] }}"
-                                    class="aspect-[1/1] w-full max-md:block hidden">
-                            @endif
-                            @if ($slide->main_image)
-                                <img src="{{ getImage($slide->main_image) }}" alt="{{ $slide->main_image['alt'] }}"
-                                    class="aspect-[5/1.975] w-full max-md:hidden block">
-                            @endif
+                                    class="aspect-[5/2.1] w-full hidden md:block">
+                                <img src="{{ getImage($slide->main_image_mob) }}" alt="{{ $slide->main_image_mob['alt'] }}"
+                                    class="w-full block md:hidden">
+                            @endif --}}
                             <div
                                 class="absolute h-full inset-0 w-full rtl:bg-gradient-to-l ltr:bg-gradient-to-r from-black">
                                 <div
@@ -96,23 +94,11 @@
         @endphp
         <section id="about_section" class="container">
             <div class="grid md:grid-cols-2 justify-start gap-5">
-                {{-- <div class="relative md:flex justify-center items-center hidden" data-aos="fade-down-left"
-                    data-aos-duration="1000" data-aos-easing="ease-in-out">
-                    <div class="image-bg bg-no-repeat bg-contain bg-bottom overflow-hidden">
-                        @if ($page->$about_us[0]->main_image)
-                            <img src="{{ getImage($page->$about_us[0]->main_image) }}" alt="woman"
-                                class="max-h-[400px] h-full aspect-square rounded-b-full mr-2 pt-10 transform ltr:scale-x-[-1]">
-                        @endif
-                    </div>
-                    <div class="absolute rtl:right-0 ltr:left-0 top-0 transform  ltr:scale-x-[-1]">
-                        <img src="{{ getImage('assets/img/yellow-vector.png') }}" alt="yellow-vector">
-                    </div>
-                </div> --}}
                 <div class="relative md:flex justify-center items-center hidden" data-aos="fade-down-left"
                     data-aos-duration="1000" data-aos-easing="ease-in-out">
                     @if ($page->$about_us[0]->main_image)
                         <img src="{{ getImage($page->$about_us[0]->main_image) }}" alt="woman"
-                            class="max-h-[400px] h-full aspect-square rounded-b-full mr-2 pt-10 transform ltr:scale-x-[-1]">
+                            class="max-h-[400px] h-full aspect-square mr-2 transform rounded-2xl">
                     @endif
                 </div>
                 <div class=" z-50">
@@ -129,7 +115,7 @@
                                 @php
                                     $img = ['task_alt_blue.png', 'task_alt_yellow.png', 'task_alt_orange.png', 'task_alt_green.png'];
                                 @endphp
-                                <div class="cent gap-2">
+                                <div class="flex items-center gap-2">
                                     <div class="w-8 h-8 relative flex-col justify-start items-start inline-flex">
                                         @if (array_key_exists($key, $img))
                                             <img src="{{ asset("assets/img/$img[$key]") }}" alt="{{ $img[$key] }}">
@@ -158,13 +144,13 @@
         @php
             $womens_diplomas = langContent('womens_diplomas');
         @endphp
-        <div class=" md:-my-20 -my-10">
+        <div class=" md:-mb-24 md:-mt-20 -mt-10 -mb-14">
             <div style=" overflow: hidden;" class=" md:h-[150px] h-12"><svg viewBox="0 0 500 150"
                     preserveAspectRatio="none" style="height: 100%; width: 100%;">
                     <path d="M0.00,49.98 C173.53,266.95 363.71,-81.39 499.15,112.02 L500.00,150.00 L0.00,150.00 Z"
                         style="stroke: none; fill: #F7F8FA;"></path>
                 </svg></div>
-            <div id="womens_diplomas" class="relative overflow-hidden pb-6" style="background: #F7F8FA;">
+            <div id="womens_diplomas" class="relative overflow-hidden pb-8" style="background: #F7F8FA;">
                 <div class="container grid gap-8 ">
                     <h2 class="section-title text-center text-neutral-800 cent before:bg-center">
                         {{ $page->$womens_diplomas[0]->title }}</h2>
@@ -270,7 +256,7 @@
             var countDownTime = <?php echo json_encode($page->$next_semester[0]->count_down_time); ?>;
             const targetDate = new Date(`${formattedDate} ${countDownTime}`).getTime();
         </script>
-        <section id="sec-five" class=" bg-[#101113] relative ">
+        <section id="sec-five" class="bg-[#101113] relative ">
             <div class="absolute top-0 right-0">
                 <img src="{{ asset('assets/img/top-right.png') }}" alt="top-right">
             </div>
@@ -389,84 +375,6 @@
                 </div>
             </div>
         </section>
-        <section id="we_got_the_best_results"
-            class="relative parallax-container md:h-[450px] h-[750px] overflow-hidden  ">
-            <div class="absolute inset-0 bg-black opacity-60"></div>
-            <div class="container cent flex-col  absolute text-center text-white inset-0 py-6">
-                <div class="flex-col justify-center items-center gap-6 inline-flex">
-                    <div class="text-center text-white md:text-[28px] text-lg font-bold capitalize leading-7">
-                        لقد حصلنا على أفضل النتائج</div>
-                    <p
-                        class="max-w-[991px] text-center text-neutral-200 md:text-lg text-sm  capitalize md:leading-10 leading-6 line-clamp-4 ">
-                        <span class="rtl:hidden  text-center"> Lorem ipsum dolor, sit amet consectetur adipisicing
-                            elit. Eum,
-                            quaerat, id
-                            est vel eius optio quasi assumenda magni cupiditate nesciunt officiis exercitationem
-                            et dolores.
-                            Quasi tempore accusantium eaque ducimus dolorem?</span>
-                        <span class="ltr:hidden">
-                            لوريم إيبسوم هو ببساطة نص
-                            شكلي (بمعنى
-                            أن الغاية هي الشكل وليس المحتوى) ويُستخدم في صناعات المطابع
-                            ودور النشر. كان لوريم إيبسوم ولايزال المعيار للنص الشكلي منذ القرن الخامس
-                            عشر
-                            عندما قامت مطبعة
-                            مجهولة برص مجموعة من الأحرف بشكل عشوائي أخذتها من نص،
-                        </span>
-                    </p>
-                </div>
-                <div class="grid md:grid-cols-4 pt-6 gap-4 ">
-                    <div class="flex md:flex-row flex-col justify-center md:items-start items-center md:gap-4  ">
-                        <img src="{{ asset('assets/img/media-icon-4.png') }}"
-                            class="w-[50px] aspect-square lg:w-[100px]" alt="media-icon">
-                        <div class="flex md:items-start items-center flex-col">
-                            <div class="text-white lg:text-4xl text-xl font-bold capitalize leading-9">
-                                2122
-                            </div>
-                            <div
-                                class="text-neutral-200 md:text-xl capitalize leading-tight text-center md:text-start">
-                                ساعة تدريب</div>
-                        </div>
-                    </div>
-                    <div class="flex md:flex-row flex-col justify-center md:items-start items-center md:gap-4   ">
-                        <img src="{{ asset('assets/img/media-icon2.png') }}"
-                            class="w-[50px] aspect-square lg:w-[100px]" alt="media-icon2">
-                        <div class="flex md:items-start items-center flex-col">
-                            <div class="text-white lg:text-4xl text-xl font-bold  capitalize leading-9">
-                                2122
-                            </div>
-                            <div
-                                class=" text-neutral-200 md:text-xl capitalize leading-tight text-center md:text-start">
-                                ساعة تدريب فى سوق العمل</div>
-                        </div>
-                    </div>
-                    <div class="flex md:flex-row flex-col justify-center md:items-start items-center md:gap-4   ">
-                        <img src="{{ asset('assets/img/media-icon.png') }}"
-                            class="w-[50px] aspect-square lg:w-[100px]" alt="media-icon">
-                        <div class="flex md:items-start items-center flex-col ">
-                            <div class=" text-white lg:text-4xl text-xl font-bold  capitalize leading-9">
-                                2122
-                            </div>
-                            <div
-                                class="text-neutral-200 md:text-xl capitalize leading-tight text-center md:text-start">
-                                فصول تدريبية</div>
-                        </div>
-                    </div>
-                    <div class="flex md:flex-row flex-col justify-center md:items-start items-center md:gap-4 ">
-                        <img src="{{ asset('assets/img/media-icon-3.png') }}"
-                            class="w-[50px] aspect-square lg:w-[100px]" alt="media-icon">
-                        <div class="flex md:items-start items-center flex-col ">
-                            <div class=" text-white lg:text-4xl text-xl font-bold capitalize leading-9">
-                                2122
-                            </div>
-                            <div
-                                class="text-neutral-200 md:text-xl capitalize leading-tight text-center md:text-start">
-                                شهور تدريب في احد شركات التسويق والإعلانات</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
         @php
             $customers_saying = langContent('customers_saying');
         @endphp
@@ -478,7 +386,7 @@
                 <div class="swiper-wrapper py-10">
                     @foreach ($page->$customers_saying[0]->card_stydent_opinion as $card)
                         <div
-                            class="swiper-slide h-[236px] relative bg-white rounded-2xl border border-neutral-200 p-3 overflow-hidden">
+                            class="swiper-slide relative bg-white rounded-2xl border border-neutral-200 p-3 overflow-hidden">
                             <div class=" absolute ltr:-right-1 rtl:-left-1 -top-0.5 opacity-20 scale-110 transform">
                                 <img src="{{ asset('assets/img/quots.png') }}" alt="">
                             </div>
@@ -503,27 +411,20 @@
                 <div class="swiper-pagination mt-10"></div>
             </div>
         </section>
-        <section class="cent  overflow-hidden relative w-full h-full  " id="formLast">
+        <section class="cent  overflow-hidden relative w-full h-full " id="formLast">
             <div class="absolute inset-0">
-                <img src="{{ asset('assets/img/contact-fom-image.png') }}" class="w-full h-full">
+                <img src="{{ asset('assets/img/contact-fom-image.png') }}" class="w-full h-full max-md:hidden">
+                <img src="{{ asset('assets/img/contact-mob.jpg') }}" class="w-full h-full md:block">
             </div>
             <div class=" absolute inset-0" style="background: rgba(0, 0, 0, 0.436);">
             </div>
             <div class="grid md:grid-cols-2 z-50 gap-10 py-4 container">
                 <div class="flex flex-col justify-center md:items-start items-center md:gap-4">
                     <h4 class="text-white pb-5 md:text-[28px] text-lg font-bold capitalize leading-7">
-                        العروض الترويجية
+                        {{ __('messages.Promotions') }}
                     </h4>
                     <p class="text-start text-[#E2E2E2] md:text-lg text-sm capitalize leading-9">
-                        <span>
-                            لوريم إيبسوم هو ببساطة نص
-                            شكلي (بمعنى
-                            أن الغاية هي الشكل وليس المحتوى) ويُستخدم في صناعات المطابع
-                            ودور النشر. كان لوريم إيبسوم ولايزال المعيار للنص الشكلي منذ القرن الخامس
-                            عشر
-                            عندما قامت مطبعة
-                            مجهولة برص مجموعة من الأحرف بشكل عشوائي أخذتها من نص،
-                        </span>
+                        {{ __('messages.It was an excellent experience, and I benefited a lot. I recommend it to you.') }}
                     </p>
                 </div>
                 @livewire('form-leads-component')

@@ -33,6 +33,7 @@
                             <span>{{ $page->$first_section_about_us[0]->content }}</span>
                         </p>
                     </div>
+                    @if($page->$first_section_about_us[0]->list)
                     <div class="grid md:grid-cols-2 lg:gap-x-20 gap-x-0 gap-y-6 lg:justify-between">
                         @foreach ($page->$first_section_about_us[0]->list as $key => $list)
                             @php
@@ -48,13 +49,14 @@
                             </div>
                         @endforeach
                     </div>
+                    @endif
                 </div>
             </div>
         </section>
         @php
             $woman_section = langContent('woman_section');
         @endphp
-        <section class=" bg-section">
+        <section class="bg-section">
             <div class="container">
                 <div class="grid md:grid-cols-2 justify-start gap-5">
                     <div class="flex items-center z-50">
@@ -84,6 +86,7 @@
         @php
             $what_we_offer_you = langContent('what_we_offer_you');
         @endphp
+        @if($page->$what_we_offer_you)
         <section class="container">
             <div class="">
                 <div class="cent flex-col">
@@ -102,6 +105,7 @@
                 </div>
             </div>
         </section>
+        @endif
         <section id="we_got_the_best_results"
             class="relative parallax-container-about md:h-[450px] h-[750px] overflow-hidden">
             <div class="absolute inset-0 bg-black opacity-60"></div>

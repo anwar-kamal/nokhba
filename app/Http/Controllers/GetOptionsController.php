@@ -58,16 +58,11 @@ class GetOptionsController extends Controller
             }
             return $res;
         } else if ($request == 'InstallmentPackage') {
-            $packages = \App\Models\InstallmentPackage::where('activate', '=', 1)->get();
-
-            $res = array();
-            foreach ($packages as $package) {
-                $object = new \stdClass();
-                $object->name = $package->name . ' - ' . $package->id;
-                $object->id = $package->id;
-                $res[] = $object;
-            }
-            return $res;
+            $diplomas = \App\Models\Product::query();
+            $diplomas->where('product_type_id', 6);
+            $diplomas->where('company_id', 1);
+            $diplomas->where('active', 1);
+            return $diplomas->get();
         }
     }
 

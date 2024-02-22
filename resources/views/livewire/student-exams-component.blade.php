@@ -63,7 +63,7 @@
                     <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 ">
                         <th scope="row"
                             class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white flex gap-2 items-center ">
-                            <img src="./assets/table-image.png" alt="" width="50" height="50"
+                            <img src="{{ asset('assets/img/table-image.png') }}" alt="" width="50" height="50"
                                 class=" rounded-lg">
                             <div class="text-neutral-800 text-sm font-medium tracking-wide ">
                                 مبادئ إدارة الموارد البشريه - بشري 101</div>
@@ -91,7 +91,7 @@
                     <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 ">
                         <th scope="row"
                             class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white flex gap-2 items-center ">
-                            <img src="./assets/table-image.png" alt="" width="50" height="50"
+                            <img src="{{ asset('assets/img/table-image.png') }}" alt="" width="50" height="50"
                                 class=" rounded-lg">
                             <div class="text-neutral-800 text-sm font-medium tracking-wide ">
                                 مبادئ إدارة الموارد البشريه - بشري 101</div>
